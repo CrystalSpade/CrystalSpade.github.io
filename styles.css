@@ -1,0 +1,122 @@
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #38bdf8;
+  --border: #1f2933;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 32px;
+}
+
+/* HEADER */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, #020617, #020617aa);
+}
+
+.site-header h1 {
+  margin-bottom: 8px;
+}
+
+.tagline {
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+nav a {
+  margin-right: 16px;
+  font-weight: 500;
+}
+
+/* SECTIONS */
+section {
+  margin-top: 64px;
+}
+
+h2 {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+/* PROJECTS */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--card);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.project-card h3 {
+  margin-top: 0;
+}
+
+.project-card ul {
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.project-links {
+  margin-top: 16px;
+}
+
+.project-links a {
+  margin-right: 16px;
+  font-weight: 600;
+}
+
+/* SKILLS */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skills-grid span {
+  background: #020617;
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+/* FOOTER */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 80px;
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+}
