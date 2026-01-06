@@ -1,0 +1,388 @@
+			:root 
+			{
+				--text-color: #000000;
+				--bg-color: #ffffff;
+				--button-bg-color: #4176b3;
+				--button-hover-bg-color: #335d8e;
+				--div-bg-color: #ffffff;
+				--h1-color: #000000;
+				--container-bg-color: #f9f9f9;
+				--overlay-color: rgba(0, 0, 0, 0);
+				--links-color: #466991;
+				--section-bg-color: #ffffff;
+			}
+		
+			.a
+			{
+				color: var(--links-color) !important;
+			}
+			
+			.section
+			{
+				background-color: var(--section-bg-color); !important;
+			}
+			
+			.body 
+			{
+				transition: background-color 0.3s ease;
+				color: var(--text-color);
+				background-color: var(--bg-color);
+			}
+			
+			.button 
+			{
+				background-color: var(--button-bg-color);
+				color: var(--text-color);
+				cursor: pointer;
+				text-align: center;
+				padding: 10px 20px;
+				border: none;
+				border-radius: 5px 0 5px 0;
+				font-size: 12px;
+			}
+			
+			.button:hover 
+			{
+				background-color: var(--button-hover-bg-color);
+			}
+			
+			.button2 
+			{
+				position: fixed;
+				color: #000000;
+				top: 25px;
+				border-radius:100%;
+				right: 25px;
+				width: 50px;
+				height: 50px;
+				cursor: pointer;
+				z-index: 10000;
+				background-image: url('https://s3.us-east-1.amazonaws.com/files.florenceco.org/public/Logos/2024/Icons/Accessibility%20Icon.png');
+				background-size: cover;
+				background-position: center;
+			}
+
+			.button2:hover {
+				background-color: rgba(0, 0, 0, 0.8);
+			}
+
+			.close-button
+			{
+				background-color: #007bff;
+				color: #ffffff;
+				padding: 10px 20px;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				margin-top: 20px;
+			}
+			
+			.container1
+			{
+				background-color: var(--div-bg-color);
+				border: 1px solid #afafaf;
+				border-radius: 10px;
+				padding: 20px;
+				margin-bottom: 20px;
+				background-color: var(--container-bg-color); 
+			}
+			
+			.content 
+			{
+				z-index: 3;
+			}
+			
+			/* remove this at some point*/
+			.custom
+			{
+				cursor: url(https://s3.us-east-1.amazonaws.com/files.florenceco.org/public/Logos/2024/Pointers/FC_PointerOutline.png), auto;
+				 cursor: url(https://s3.us-east-1.amazonaws.com/files.florenceco.org/public/Logos/2024/Pointers/FC_PointerOutline.svg) 25 25, move;
+			}
+			
+			/*
+			.custom:hover 
+			{
+				cursor: auto;
+			}
+			*/
+			
+			.dark-mode-enabled 
+			{
+				background-color: var(--section-bg-color) !important;
+				color: var(--text-color) !important;
+				color: var(--h1-color) !important;
+			}
+			
+			.div {
+					background-color: var(--div-bg-color);
+				}
+			
+			.focusable 
+			{
+				transition: background-color 0.3s ease; /* Smooth transition for background color */
+			}
+			
+			
+			.focusable-body 
+			{
+				position: relative;
+				z-index: 1;
+				background-color: #4d4d4d; /* Dark background */
+				color: #000000; /* Light text color */
+				cursor: pointer;
+			}
+			
+			.focusable-container 
+			{
+				position: relative;
+				z-index: 1;
+				background-color: #4d4d4d; /* Dark background */
+				color: #000000; /* Light text color */
+				cursor: pointer;
+			}
+			
+			.font-size-adjusted 
+			{
+				font-size: 1.2em;
+			}
+			
+			h1, h2, h3, h4, h5, h6, li, p
+			{
+				color: var(--h1-color);
+			}
+			
+			.highlighted 
+			{
+				background-color: #FFFFFF;
+				color: #000000; 
+				position: relative;
+				z-index: 9998;
+			}
+			  
+			input:checked+.slider 
+			{
+				background-color: #2196F3;
+			}
+
+			input:focus+.slider 
+			{
+				box-shadow: 0 0 1px #2196F3;
+			}
+
+			input:checked+.slider:before 
+			{
+				transform: translateX(26px);
+			}
+			  
+			 .icon-bar 
+			 {
+				position: fixed;
+				top: 75%;
+				transform: translateY(50%);
+			}
+
+			.icon-bar a 
+			{
+				display: block;
+				text-align: center;
+				padding: 16px;
+				transition: all 0.3s ease;
+				color: white;
+				font-size: 20px;
+			}
+
+			.icon-bar a:hover 
+			{
+				background-color: #000000;
+			}  
+			
+			#keyfocusable 
+			{
+				margin-top: 20px;
+			}
+
+			#keyfocusable p, #keyfocusable button, #keyfocusable img 
+			{
+				margin: 10px 0;
+				padding: 10px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				background-color: #f9f9f9;
+				cursor: pointer;
+			}
+
+			#keyfocusable p:focus, #keyfocusable button:focus, #keyfocusable img:focus 
+			{
+				outline: 2px solid blue;
+			}
+
+			.overlay 
+			{
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: var(--overlay-color);
+				z-index: 2;
+				pointer-events: none;
+			}
+			
+			.popup 
+			{
+				display: none;
+				position: fixed;
+				top: 50% !important;
+				left: 50% !important;
+				transform: translate(-50%, -50%);
+				background-color: var(--bg-color);
+				color: var(--text-color);
+				padding: 20px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				z-index: 1000;
+				width:50%;
+				Height: 50%;
+				font-size: 16px;
+				text-align: left;
+				overflow: auto;
+			}
+			
+			.button3
+			{
+			padding: 10px 20px;
+			background-color: var(--button-bg-color);
+			color: #ffffff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+				
+			}
+			
+			.button3:hover 
+			{
+				background-color: var(--button-hover-bg-color);
+			}
+
+			.slider 
+			{
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: var(--button-bg-color);
+				transition: .4s;
+			}
+			
+			.slider:after
+			{
+				background-color: var(--button-hover-bg-color);
+			}
+
+			.slider:before 
+			{
+				position: absolute;
+				content: '';
+				height: 26px;
+				width: 26px;
+				left: 4px;
+				bottom: 4px;
+				background-color: #ffffff;
+				transition: .4s;
+			}
+
+			/* Rounded sliders */
+			.slider.round 
+			{
+				border-radius: 34px;
+			}
+
+			.slider.round:before 
+			{
+				border-radius: 50%;
+			}
+			  
+			.switch 
+			{
+				position: relative;
+				display: inline-block;
+				width: 60px;
+				height: 34px; 
+				display: flex;
+				align-items: center;
+				gap: 9ch;
+				justify-content: space-between;
+				flex: 1;
+				text-align: right;
+				white-space: nowrap;
+			}
+
+			.switch input 
+			{
+				opacity: 0;
+				width: 0;
+				height: 0;
+			}
+
+			.tab-button 
+			{
+				background-color: var(--button-bg-color);
+				color: var(--text-color);
+				cursor: pointer;
+				padding: 10px 20px;
+				border: none;
+				border-radius: 5px 0 5px 0;
+			}
+			
+			.tab-button:hover 
+			{
+				background-color: var(--button-hover-bg-color);
+			}
+			
+			#tooltip 
+			{
+				display: none;
+				position: absolute;
+				background-color: #666666;
+				color: var(--text-color);
+				padding: 5px;
+				border-radius: 5px;
+				z-index: 9999;
+			}
+			
+			.widget-container 
+			{
+				position: fixed;
+				right: 0;
+				border: 4.5px solid #9b9b9b;
+				border-style: double;
+				padding: 10px;
+				margin-right: 10px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				background-color: var(--container-bg-color);
+				border-radius: 10px; 
+				width: 340px;
+				font-size: 17px;
+				z-index:9999;
+				justify-content: left;
+			}
+			
+			.switch:hover #tooltip 
+			{
+				display: block; 
+			}
+	
+			.visual-mode-enabled
+			{
+				background-color: var(--bg-color) !important;
+				color: var(--text-color) !important;
+				z-index: 4;
+			}
+			
+			.vision-mode-enabled 
+			{
+				background-color: var(--bg-color) !important;
+				color: var(--text-color) !important;
+			}
