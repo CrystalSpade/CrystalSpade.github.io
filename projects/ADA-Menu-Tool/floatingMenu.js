@@ -1,5 +1,5 @@
-// Displays Toggled dialog box
-document.addEventListener("DOMContentLoaded", () => {
+// Displays toggled dialog box
+const initFloatingMenu = () => {
   const openButton = document.getElementById("openButton");
   const widget = document.getElementById("widgetFunction");
 
@@ -11,4 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ? "block"
         : "none";
   });
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initFloatingMenu);
+} else {
+  initFloatingMenu();
+}
