@@ -1,4 +1,4 @@
-<!-- Popup dailog box -->
+// Popup dailog box 
 	var isOpen = 0;
 	
 	function togglePopup() {
@@ -13,4 +13,5 @@
 				popup.style.display = 'none';
 				isOpen = 0;
 		}
+
 	}
