@@ -1,44 +1,23 @@
 // Draggable Dialog 
-			const draggable = document.getElementById("draggable");
-			if (!draggable) return;
+			document.addEventListener("DOMContentLoaded", () => {
+  const dragItem = document.getElementById("draggable");
+  if (!dragItem) return;
 
-			var draggable = document.getElementById('draggable');
-			var offsetX, offsetY, isDragging = false;
-			function onMouseDown(event) 
-			{
-				offsetX = event.clientX - draggable.offsetLeft;
-				offsetY = event.clientY - draggable.offsetTop;
-				isDragging = true;
-				document.addEventListener('mousemove', onMouseMove);
-				document.addEventListener('mouseup', onMouseUp);
-			}
+  let offsetX = 0, offsetY = 0, isDragging = false;
 
-			function onMouseMove(event) 
-			{
-				if (isDragging) 
-				{
-					// Calculate new position
-					var x = event.clientX - offsetX;
-					var y = event.clientY - offsetY;
+  dragItem.addEventListener("mousedown", e => {
+    isDragging = true;
+    offsetX = e.clientX - dragItem.offsetLeft;
+    offsetY = e.clientY - dragItem.offsetTop;
+  });
 
-					// Set new position
-					draggable.style.left = x + 'px';
-					draggable.style.top = y + 'px';
-				}
-			}
+  document.addEventListener("mousemove", e => {
+    if (!isDragging) return;
+    dragItem.style.left = `${e.clientX - offsetX}px`;
+    dragItem.style.top = `${e.clientY - offsetY}px`;
+  });
 
-			function onMouseUp(event) 
-			{
-				if (isDragging) 
-				{
-					// Reset dragging flag
-					isDragging = false;
-
-					// Remove event listeners for mouse move and mouse up events
-					document.removeEventListener('mousemove', onMouseMove);
-					document.removeEventListener('mouseup', onMouseUp);
-				}
-			}
-			
-			draggable.addEventListener('mousedown', onMouseDown);
-
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+});
