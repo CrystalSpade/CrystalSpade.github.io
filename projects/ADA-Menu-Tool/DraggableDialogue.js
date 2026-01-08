@@ -1,9 +1,12 @@
-// Draggable Dialog 
-			document.addEventListener("DOMContentLoaded", () => {
+// Draggable Dialog
+
+const initDraggableDialog = () => {
   const dragItem = document.getElementById("draggable");
   if (!dragItem) return;
 
-  let offsetX = 0, offsetY = 0, isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+  let isDragging = false;
 
   dragItem.addEventListener("mousedown", e => {
     isDragging = true;
@@ -20,4 +23,10 @@
   document.addEventListener("mouseup", () => {
     isDragging = false;
   });
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initDraggableDialog);
+} else {
+  initDraggableDialog();
+}
