@@ -1,7 +1,6 @@
 // Font Size Increase 
-		document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("font_size_switch");
-
   if (!toggle) return;
 
   toggle.addEventListener("change", () => {
@@ -9,3 +8,4 @@
       toggle.checked ? "120%" : "";
   });
 });
+
