@@ -1,13 +1,13 @@
 //keyboard-nav-enabled to control which sections can use it
 			
-		document.addEventListener("keydown", function (event) {
-  const checkbox = document.getElementById("keyboard_nav_switch");
+document.addEventListener("keydown", e => {
+  const toggle = document.getElementById("keyboard_nav_switch");
   const widget = document.getElementById("widgetFunction");
 
-  if (!checkbox || !widget) return;
-  if (!checkbox.checked && widget.style.display === "block") {
-    if (["Tab","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(event.key)) {
-      event.preventDefault();
+  if (!toggle || !widget) return;
+  if (!toggle.checked && widget.style.display === "block") {
+    if (["Tab", "ArrowUp", "ArrowDown"].includes(e.key)) {
+      e.preventDefault();
     }
   }
 });
