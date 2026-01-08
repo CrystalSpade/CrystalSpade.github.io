@@ -1,11 +1,13 @@
-<div id="widgetFunction" style="display:none;">
-  <div class="widget-container" id="draggable" aria-label="Accessibility Options">
+<button id="openButton" class="button2" aria-label="Accessibility options"></button>
 
-    <h3><strong>This box is draggable</strong></h3>
+<div id="widgetFunction" style="display:none;">
+  <div class="widget-container" id="draggable">
+
+    <h3><strong>Accessibility Options</strong></h3>
 
     <ul>
       <label class="switch" id="lblDarkMode">
-        <input type="checkbox" id="dark_mode_switch" aria-pressed="false">
+        <input type="checkbox" id="dark_mode_switch">
         <span class="slider round"></span>
         <p><strong>Dark<br>Mode</strong></p>
       </label>
@@ -37,9 +39,13 @@
 
     <!-- Tooltips -->
     <div id="tooltipDarkMode" hidden>Enable dark mode</div>
-    <div id="tooltipVisionMode" hidden>Enable high contrast</div>
-    <div id="tooltipFontSize" hidden>Increase font size</div>
+    <div id="tooltipVisionMode" hidden>Enable high contrast mode</div>
+    <div id="tooltipFontSize" hidden>Increase text size</div>
     <div id="toolTipVisualFocus" hidden>Highlight focused content</div>
-    <div id="tooltipKeyNav" hidden>Enable keyboard navigation</div>
+    <div id="tooltipKeyNav" hidden>Keyboard navigation help</div>
+
   </div>
 </div>
+
+<div class="overlay"></div>
+
