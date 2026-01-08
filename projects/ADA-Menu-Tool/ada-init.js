@@ -1,4 +1,4 @@
-// ada loader
+// ADA Widget Loader
 
 (function () {
   // Prevent double-loading
@@ -8,11 +8,11 @@
   // 1. Load CSS
   const css = document.createElement("link");
   css.rel = "stylesheet";
-  css.href = "ada-widget/ada.css";
+  css.href = "ada.css";
   document.head.appendChild(css);
 
   // 2. Inject widget HTML
-  fetch("ada-widget/ada-widget.html")
+  fetch("ada-widget.html")
     .then(res => res.text())
     .then(html => {
       document.body.insertAdjacentHTML("beforeend", html);
@@ -32,8 +32,7 @@
 
       scripts.forEach(file => {
         const s = document.createElement("script");
-        s.src = `ada-widget/${file}`;
-        s.defer = true;
+        s.src = file;
         document.body.appendChild(s);
       });
     })
