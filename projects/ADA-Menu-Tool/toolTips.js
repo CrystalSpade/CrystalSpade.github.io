@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const pairs = [
+  const tips = [
     ["lblDarkMode", "tooltipDarkMode"],
     ["lblVisionImpaired", "tooltipVisionMode"],
     ["lblFontSize", "tooltipFontSize"],
@@ -7,13 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
     ["lblKeyboard", "tooltipKeyNav"]
   ];
 
-  pairs.forEach(([labelId, tipId]) => {
+  tips.forEach(([labelId, tipId]) => {
     const label = document.getElementById(labelId);
     const tip = document.getElementById(tipId);
 
     if (!label || !tip) return;
 
-    label.addEventListener("mouseover", () => tip.style.display = "block");
-    label.addEventListener("mouseout", () => tip.style.display = "none");
+    label.addEventListener("mouseenter", () => tip.hidden = false);
+    label.addEventListener("mouseleave", () => tip.hidden = true);
   });
 });
+
