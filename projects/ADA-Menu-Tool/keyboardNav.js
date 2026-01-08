@@ -1,37 +1,13 @@
-<!-- keyboard-nav-enabled to control which sections can use it -->
+//keyboard-nav-enabled to control which sections can use it
 			
-			function toggleOption(optionId) 
-			{
-				var checkbox = document.getElementById(optionId);
-				var triggerButton = document.getElementById('triggerButton');
-				var keyfocusableElements = document.querySelectorAll('#keyfocusable p, #keyfocusable button, #keyfocusable img');
+		document.addEventListener("keydown", function (event) {
+  const checkbox = document.getElementById("keyboard_nav_switch");
+  const widget = document.getElementById("widgetFunction");
 
-				if (checkbox.checked) 
-				{
-					keyfocusableElements.forEach(element => 
-					{
-						element.setAttribute('tabindex', '0');
-					});
-					triggerButton.removeAttribute('disabled');
-				} 
-				else 
-				{
-					keyfocusableElements.forEach(element => 
-					{
-						element.removeAttribute('tabindex');
-					});
-					triggerButton.setAttribute('disabled', true);
-				}
-			}
-
-			document.addEventListener('keydown', function(event) 
-			{
-				var checkbox = document.getElementById('keyboard_nav_switch');
-				if (!checkbox.checked) 
-				{
-					if (event.key === 'Tab' || event.key === 'ArrowUp' || event.key === 'ArrowDown' || event.key === 'ArrowLeft' || event.key === 'ArrowRight') 
-					{
-						event.preventDefault();
-					}
-				}
-			});
+  if (!checkbox || !widget) return;
+  if (!checkbox.checked && widget.style.display === "block") {
+    if (["Tab","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(event.key)) {
+      event.preventDefault();
+    }
+  }
+});
