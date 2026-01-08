@@ -1,3 +1,5 @@
+// ada loader
+
 (function () {
   // Prevent double-loading
   if (window.__ADA_WIDGET_LOADED__) return;
