@@ -1,4 +1,6 @@
-<!-- Draggable Dialog -->
+// Draggable Dialog 
+			const draggable = document.getElementById("draggable");
+			if (!draggable) return;
 
 			var draggable = document.getElementById('draggable');
 			var offsetX, offsetY, isDragging = false;
@@ -39,3 +41,4 @@
 			}
 			
 			draggable.addEventListener('mousedown', onMouseDown);
+
