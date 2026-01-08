@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+const initTooltips = () => {
   const tips = [
     ["lblDarkMode", "tooltipDarkMode"],
     ["lblVisionImpaired", "tooltipVisionMode"],
@@ -13,8 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!label || !tip) return;
 
-    label.addEventListener("mouseenter", () => tip.hidden = false);
-    label.addEventListener("mouseleave", () => tip.hidden = true);
+    label.addEventListener("mouseenter", () => {
+      tip.hidden = false;
+    });
+    label.addEventListener("mouseleave", () => {
+      tip.hidden = true;
+    });
   });
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initTooltips);
+} else {
+  initTooltips();
+}
 
