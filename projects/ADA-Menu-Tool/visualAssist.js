@@ -1,5 +1,5 @@
-	//Visual Focus Control 
-document.addEventListener("DOMContentLoaded", () => {
+// Visual Focus Control
+const initVisualAssist = () => {
   const toggle = document.getElementById("visual_focus_switch");
   if (!toggle) return;
 
@@ -8,4 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
       el.classList.toggle("highlighted", toggle.checked);
     });
   });
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initVisualAssist);
+} else {
+  initVisualAssist();
+}
