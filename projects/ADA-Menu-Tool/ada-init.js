@@ -1,10 +1,21 @@
 // ADA Widget Loader
 
 (function () {
-  const scriptUrl = new URL(
-    (document.currentScript && document.currentScript.src) || "ada-init.js",
-    document.baseURI
-  );
+  const resolveScriptUrl = () => {
+    if (document.currentScript && document.currentScript.src) {
+      return document.currentScript.src;
+    }
+
+    const scripts = Array.from(document.getElementsByTagName("script"));
+    const match = scripts
+      .map(script => script.src)
+      .filter(Boolean)
+      .find(src => src.includes("ada-init.js"));
+
+    return match || new URL("ada-init.js", document.baseURI).href;
+  };
+
+  const scriptUrl = new URL(resolveScriptUrl(), document.baseURI);
   const assetBase = new URL("./", scriptUrl);
 
   const initAdaWidget = () => {
