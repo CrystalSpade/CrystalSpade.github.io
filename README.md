@@ -1,4 +1,3 @@
-# CrystalSpade.github.io
 # Web Systems & Accessibility Portfolio
 
 This repository contains the source code and supporting assets for my professional web development portfolio. The site highlights publicly demonstrable projects involving accessibility tooling, responsive design, and structured web system implementation.
