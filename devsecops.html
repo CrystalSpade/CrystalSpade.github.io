@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabrielle Johnson | DevSecOps</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Gabrielle Johnson</h1>
+      <p class="tagline">DevSecOps • Kubernetes • Security-minded Engineering</p>
+
+      <nav>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>DevSecOps / Kubernetes</h2>
+      <p>
+        This page documents my hands-on Kubernetes learning and security-minded configuration practice.
+        I’m building a portfolio of real artifacts (YAML manifests, notes, and lab outcomes).
+      </p>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Kubernetes Learning (YAML Manifests)</h3>
+          <p>
+            A growing collection of Kubernetes configuration files from hands-on labs.
+            Each file includes a brief “why” comment describing what it deploys.
+          </p>
+          <ul>
+            <li>Deployments / Services</li>
+            <li>ConfigMaps / Secrets (as added)</li>
+            <li>Security-minded configuration practices</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/CrystalSpade/CrystalSpade.github.io/tree/main/k8s-learning" target="_blank" rel="noopener">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top: 1.25rem;">
+        <a href="index.html#skills">← Back to Skills</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Gabrielle Johnson</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
