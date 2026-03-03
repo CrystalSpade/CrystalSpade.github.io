@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Florence County Work | Gabrielle Johnson</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Florence County Work</h1>
+      <p class="tagline">Selected work samples and demonstrations</p>
+
+      <nav>
+        <a href="index.html#experience">← Back to Experience</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="devsecops.html">DevSecOps</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Overview</h2>
+      <p>
+        This page contains selected demonstrations of web systems and accessibility work completed during my time with
+        Florence County. Code and internal implementation details are not shared to protect confidentiality, but these
+        samples show functionality, UI behavior, and outcomes.
+      </p>
+    </section>
+
+    <section>
+      <h2>ADA Accessibility Toolkit Demonstration</h2>
+      <p>
+        Demonstrations of accessibility enhancements, including usability-focused UI modes and assistive navigation behavior.
+      </p>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Full ADA Toolkit Demo</h3>
+          <video controls style="width:100%; border-radius:12px;">
+            <source src="assets/florence-county/ada-demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <ul>
+            <li>Mode toggles (contrast/dyslexia/dark)</li>
+            <li>Accessibility-first UI behaviors</li>
+            <li>Keyboard navigation support</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected Web Systems</h2>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Internal HR Website</h3>
+          <p>Internal-facing web resource for employee access and departmental communication.</p>
+          <img src="assets/florence-county/hr-site-home.png" alt="HR Website Screenshot" style="width:100%; border-radius:12px;" />
+        </div>
+
+        <div class="project-card">
+          <h3>Employee Phone Directory</h3>
+          <p>Internal phone directory interface designed for fast employee lookup and usability.</p>
+          <img src="assets/florence-county/phone-directory.png" alt="Phone Directory Screenshot" style="width:100%; border-radius:12px;" />
+        </div>
+
+        <div class="project-card">
+          <h3>eSports Event Website</h3>
+          <p>Event-focused website created for Parks & Recreation to promote and share details for community programming.</p>
+          <img src="assets/florence-county/esports-event.png" alt="eSports Website Screenshot" style="width:100%; border-radius:12px;" />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Notes</h2>
+      <ul>
+        <li>These samples are shared for portfolio demonstration only.</li>
+        <li>Internal URLs, credentials, and proprietary code are excluded.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Gabrielle Johnson</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
