@@ -40,7 +40,8 @@ a:hover
 }
 
 /* SKILL CHIPS */
-.skills-grid span {
+.skills-grid span, 
+.skills-grid a {
   background: #020617;
   border: 1px solid var(--border);
   padding: 8px 14px;
