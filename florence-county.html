@@ -31,92 +31,131 @@
       To respect internal policies, these demonstrations show interface behavior and layout structure without exposing source code or internal systems.
     </p>
     
-    <div class="project-grid">
-  
-      <!-- Desktop ADA -->
-      <div class="project-card">
-      <h2>ADA Accessibility Toolkit — Desktop</h2>
-      <p>
-         Desktop implementation of a customizable accessibility interface designed to improve usability and readability across public-facing web pages.
-      </p>
-      <ul>
-        <li>Dark Mode</li>
-        <li>High Contrast Mode</li>
-        <li>Dyslexia-friendly font toggle</li>
-        <li>Adjustable font size</li>
-        <li>Visual Focus highlighting</li>
-        <li>Keyboard navigation visibility</li>
-        <li>Draggable accessibility toolbox</li>
-      </ul>
-      
-      <div class="video-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/Lx-d9Du6tJc" title="ADA Accessibility Toolkit Desktop Demo" frameborder="0" allowfullscreen></iframe>
+    <!-- Project Carousel -->
+    <div class="carousel" id="project-carousel">
+      <button class="carousel-btn carousel-prev" aria-label="Previous project">&#8249;</button>
+      <div class="carousel-track-container">
+        <div class="carousel-track">
+
+          <!-- Desktop ADA -->
+          <div class="carousel-slide project-card">
+            <h2>ADA Accessibility Toolkit — Desktop</h2>
+            <p>
+              Desktop implementation of a customizable accessibility interface designed to improve usability and readability across public-facing web pages.
+            </p>
+            <ul>
+              <li>Dark Mode</li>
+              <li>High Contrast Mode</li>
+              <li>Dyslexia-friendly font toggle</li>
+              <li>Adjustable font size</li>
+              <li>Visual Focus highlighting</li>
+              <li>Keyboard navigation visibility</li>
+              <li>Draggable accessibility toolbox</li>
+            </ul>
+            <div class="video-embed">
+              <iframe src="https://www.youtube-nocookie.com/embed/Lx-d9Du6tJc" title="ADA Accessibility Toolkit Desktop Demo" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Mobile ADA -->
+          <div class="carousel-slide project-card">
+            <h2>ADA Accessibility Toolkit — Mobile</h2>
+            <p>
+              Responsive mobile version of the accessibility toolkit demonstrating touch-friendly controls and accessibility features optimized for smaller screens.
+            </p>
+            <ul>
+              <li>Mobile accessibility panel</li>
+              <li>Responsive layout adjustments</li>
+              <li>Touch-friendly UI controls</li>
+              <li>Visual readability modes</li>
+            </ul>
+            <div class="video-embed">
+              <iframe src="https://www.youtube-nocookie.com/embed/_yxMdcL6E0Y" title="ADA Accessibility Toolkit Mobile Demo" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- eSports Website -->
+          <div class="carousel-slide project-card">
+            <h2>Florence County eSports Festival Website</h2>
+            <p>
+              Public-facing event website used to promote the Florence County eSports Festival.
+              The site includes event information, navigation for tournament schedules, and a structured layout designed for public engagement.
+            </p>
+            <ul>
+              <li>Event landing page</li>
+              <li>Hero section with countdown</li>
+              <li>Structured navigation layout</li>
+              <li>Sponsor and partner section</li>
+              <li>Responsive page behavior</li>
+            </ul>
+            <div class="video-embed">
+              <iframe src="https://www.youtube-nocookie.com/embed/LrLV0MpSUDA" title="Florence County eSports Website Demo" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <button class="carousel-btn carousel-next" aria-label="Next project">&#8250;</button>
+      <div class="carousel-dots">
+        <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+        <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
       </div>
     </div>
-    
-    <!-- Mobile ADA -->
-    <div class="project-card">
-      <h2>ADA Accessibility Toolkit — Mobile</h2>
-      <p>
-        Responsive mobile version of the accessibility toolkit demonstrating touch-friendly controls and accessibility features optimized for smaller screens.
-      </p>
-      <ul>
-        <li>Mobile accessibility panel</li>
-        <li>Responsive layout adjustments</li>
-        <li>Touch-friendly UI controls</li>
-        <li>Visual readability modes</li>
-      </ul>
-      
-      <div class="video-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/_yxMdcL6E0Y" title="ADA Accessibility Toolkit Mobile Demo" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-    
-    <!-- eSports Website -->
-    <div class="project-card">
-      <h2>Florence County eSports Festival Website</h2>
-      <p>
-        Public-facing event website used to promote the Florence County eSports Festival.  
-        The site includes event information, navigation for tournament schedules, and a structured layout designed for public engagement.
-      </p>
-      <ul>
-        <li>Event landing page</li>
-        <li>Hero section with countdown</li>
-        <li>Structured navigation layout</li>
-        <li>Sponsor and partner section</li>
-        <li>Responsive page behavior</li>
-      </ul>
-      
-      <div class="video-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/LrLV0MpSUDA" title="Florence County eSports Website Demo" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-    
-    <!-- Internal Systems -->
-    <div class="project-card">
+
+    <!-- Internal Systems Profile Card -->
+    <div class="profile-card">
       <h2>Internal Web Interfaces</h2>
-      <p>
-        Demonstration of internal web interface layouts used for departmental resources and employee tools.
-      </p>
-      <ul>
-        <li>Human Resources department portal</li>
-        <li>Employee phone directory interface</li>
-        <li>Structured departmental navigation</li>
-        <li>Accessible content layout</li>
-      </ul>
-      <div class="interface-images">
-      <img src="assets/florence-county/Human-Resources.webp" alt="Human Resources interface preview">
-      <img src="assets/florence-county/Phone-Directory.webp" alt="Phone Directory interface preview">
+      <div class="profile-card-content">
+        <div class="profile-card-info">
+          <p>
+            Demonstration of internal web interface layouts used for departmental resources and employee tools.
+          </p>
+          <ul>
+            <li>Human Resources department portal</li>
+            <li>Employee phone directory interface</li>
+            <li>Structured departmental navigation</li>
+            <li>Accessible content layout</li>
+          </ul>
+        </div>
+        <div class="interface-images">
+          <img src="assets/florence-county/Human-Resources.webp" alt="Human Resources interface preview">
+          <img src="assets/florence-county/Phone-Directory.webp" alt="Phone Directory interface preview">
+        </div>
       </div>
     </div>
-    </div>
-    </div>
-    </main>
-   <footer class="site-footer">
-      <p>© <span id="year"></span> Gabrielle Johnson</p>
-    </footer>
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Gabrielle Johnson</p>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Carousel
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    let current = 0;
+
+    function goTo(index) {
+      current = index;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+    }
+
+    document.querySelector('.carousel-prev').addEventListener('click', () => {
+      goTo((current - 1 + slides.length) % slides.length);
+    });
+
+    document.querySelector('.carousel-next').addEventListener('click', () => {
+      goTo((current + 1) % slides.length);
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
+    });
+  </script>
 </body>
 </html>
