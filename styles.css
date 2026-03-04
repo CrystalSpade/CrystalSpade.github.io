@@ -123,6 +123,15 @@ a:hover
   }
 }
 
+html, body { overflow-x: hidden; }
+
+.site-header nav { display: flex; flex-wrap: wrap; gap: 16px; }
+.site-header nav a { margin-right: 0; }
+
+.project-card, .video-card { min-width: 0; overflow: hidden; }
+
+a, p, li { overflow-wrap: anywhere; word-break: break-word; }
+
 nav a 
 {
   margin-right: 16px;
