@@ -150,6 +150,19 @@ h2
   padding-bottom: 8px;
 }
 
+.interface-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.interface-images img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
 /* PROJECTS */
 .project-grid 
 {
