@@ -209,6 +209,146 @@ h2
   gap: 12px;
 }
 
+/* CAROUSEL */
+.carousel-wrapper
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.carousel-outer
+{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  gap: 12px;
+}
+
+.carousel-container
+{
+  flex: 1;
+  overflow: hidden;
+}
+
+.carousel-track
+{
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.carousel-slide
+{
+  min-width: 100%;
+}
+
+.carousel-btn
+{
+  flex-shrink: 0;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.carousel-btn:hover
+{
+  background: var(--accent);
+  color: #020617;
+}
+
+.carousel-dots
+{
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.carousel-dot
+{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: var(--muted);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease;
+}
+
+.carousel-dot.active
+{
+  background: var(--accent);
+}
+
+/* LIGHTBOX */
+.lightbox-overlay
+{
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-overlay.active
+{
+  display: flex;
+}
+
+.lightbox-content
+{
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-content img
+{
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 8px;
+  display: block;
+}
+
+.lightbox-close
+{
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 36px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.lightbox-close:hover
+{
+  color: var(--accent);
+}
+
+.lightbox-trigger
+{
+  cursor: zoom-in;
+}
+
 /* FOOTER */
 .site-footer 
 {
