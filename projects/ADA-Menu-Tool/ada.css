@@ -1,166 +1,298 @@
-				:root 
-			{
-				--text-color: #000000;
-				--bg-color: #ffffff;
-				--button-bg-color: #4176b3;
-				--button-hover-bg-color: #335d8e;
-				--div-bg-color: #ffffff;
-				--h1-color: #000000;
-				--container-bg-color: #f9f9f9;
-				--overlay-color: rgba(0, 0, 0, 0);
-				--links-color: #466991;
-				--section-bg-color: #ffffff;
-			}
-		
-			a
-			{␊
-				color: var(--links-color) !important;␊
-			}␊
-			␊
-			section
-			{␊
-				background-color: var(--section-bg-color) !important;
-			}␊
-			␊
-			body 
-			{␊
-				transition: background-color 0.3s ease;␊
-				color: var(--text-color);␊
-				background-color: var(--bg-color);␊
-			}␊
-			
-			.button 
-			{
-				background-color: var(--button-bg-color);
-				color: var(--text-color);
-				cursor: pointer;
-				text-align: center;
-				padding: 10px 20px;
-				border: none;
-				border-radius: 5px 0 5px 0;
-				font-size: 12px;
-			}
-			
-			.button:hover 
-			{
-				background-color: var(--button-hover-bg-color);
-			}
-			
-			.button2 
-			{
-				position: fixed;
-				color: #000000;
-				top: 25px;
-				border-radius:100%;
-				right: 25px;
-@@ -84,60 +84,69 @@
-				border-radius: 10px;
-				padding: 20px;
-				margin-bottom: 20px;
-				background-color: var(--container-bg-color); 
-			}
-			
-			.content 
-			{
-				z-index: 3;
-			}
-			
-			/* remove this at some point*/
-			.custom
-			{
-				cursor: url(https://s3.us-east-1.amazonaws.com/files.florenceco.org/public/Logos/2024/Pointers/FC_PointerOutline.png), auto;
-				 cursor: url(https://s3.us-east-1.amazonaws.com/files.florenceco.org/public/Logos/2024/Pointers/FC_PointerOutline.svg) 25 25, move;
-			}
-			
-			/*
-			.custom:hover 
-			{
-				cursor: auto;
-			}
-			*/
-			
-			body.dark-mode-enabled 
-			{
-				--text-color: #f5f5f5;
-				--bg-color: #121212;
-				--button-bg-color: #3b6aa3;
-				--button-hover-bg-color: #2f5682;
-				--div-bg-color: #1e1e1e;
-				--h1-color: #ffffff;
-				--container-bg-color: #1a1a1a;
-				--overlay-color: rgba(0, 0, 0, 0.6);
-				--links-color: #8ab4f8;
-				--section-bg-color: #1e1e1e;
-				background-color: var(--bg-color) !important;
-				color: var(--text-color) !important;
-			}
-			
-			div {
-					background-color: var(--div-bg-color);␊
-				}␊
-			
-			.focusable 
-			{
-				transition: background-color 0.3s ease; /* Smooth transition for background color */
-			}
-			
-			
-			.focusable-body 
-			{
-				position: relative;
-				z-index: 1;
-				background-color: #4d4d4d; /* Dark background */
-				color: #000000; /* Light text color */
-				cursor: pointer;
-			}
-			
-			.focusable-container 
-			{
-				position: relative;
-				z-index: 1;
-				background-color: #4d4d4d; /* Dark background */
-				color: #000000; /* Light text color */
-				cursor: pointer;
-			}
-			
-@@ -359,30 +368,40 @@
-				border: 4.5px solid #9b9b9b;
-				border-style: double;
-				padding: 10px;
-				margin-right: 10px;
-				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-				background-color: var(--container-bg-color);
-				border-radius: 10px; 
-				width: 340px;
-				font-size: 17px;
-				z-index:9999;
-				justify-content: left;
-			}
-			
-			.switch:hover #tooltip 
-			{
-				display: block; 
-			}
-	
-			.visual-mode-enabled
-			{
-				background-color: var(--bg-color) !important;
-				color: var(--text-color) !important;
-				z-index: 4;
-			}
-			
-			body.vision-mode-enabled 
-			{
-				--text-color: #ffffff;
-				--bg-color: #000000;
-				--button-bg-color: #ffff00;
-				--button-hover-bg-color: #ffd400;
-				--div-bg-color: #000000;
-				--h1-color: #ffffff;
-				--container-bg-color: #000000;
-				--overlay-color: rgba(255, 255, 255, 0.2);
-				--links-color: #00ffff;
-				--section-bg-color: #000000;
-				background-color: var(--bg-color) !important;
-				color: var(--text-color) !important;
-			}
+:root {
+    --text-color: #000000;
+    --bg-color: #ffffff;
+    --button-bg-color: #4176b3;
+    --button-hover-bg-color: #335d8e;
+    --div-bg-color: #ffffff;
+    --h1-color: #000000;
+    --container-bg-color: #f9f9f9;
+    --overlay-color: rgba(0, 0, 0, 0);
+    --links-color: #466991;
+    --section-bg-color: #ffffff;
+}
+
+a {
+    color: var(--links-color) !important;
+}
+
+section {
+    background-color: var(--section-bg-color) !important;
+}
+
+body {
+    transition: background-color 0.3s ease;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+div {
+    background-color: var(--div-bg-color);
+}
+
+.button {
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px 0 5px 0;
+    font-size: 12px;
+}
+
+.button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.button2 {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: var(--button-bg-color);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    z-index: 10000;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease;
+}
+
+.button2:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+#widgetFunction {
+    position: fixed;
+    top: 85px;
+    right: 25px;
+    z-index: 9999;
+}
+
+.widget-container {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: var(--container-bg-color);
+    border: 2px solid #9b9b9b;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    width: 360px;
+    z-index: 9999;
+    cursor: move;
+}
+
+.widget-container h3 {
+    margin-top: 0;
+    color: var(--h1-color);
+}
+
+.widget-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content {
+    z-index: 3;
+}
+
+/* remove this at some point */
+.custom {
+    cursor: url(https://s3.us-east-1.amazonaws.com/files.florenceco.org/public/Logos/2024/Pointers/FC_PointerOutline.png), auto;
+    cursor: url(https://s3.us-east-1.amazonaws.com/files.florenceco.org/public/Logos/2024/Pointers/FC_PointerOutline.svg) 25 25, move;
+}
+
+/*
+.custom:hover {
+    cursor: auto;
+}
+*/
+
+body.dark-mode-enabled {
+    --text-color: #f5f5f5;
+    --bg-color: #121212;
+    --button-bg-color: #3b6aa3;
+    --button-hover-bg-color: #2f5682;
+    --div-bg-color: #1e1e1e;
+    --h1-color: #ffffff;
+    --container-bg-color: #1a1a1a;
+    --overlay-color: rgba(0, 0, 0, 0.6);
+    --links-color: #8ab4f8;
+    --section-bg-color: #1e1e1e;
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+.focusable {
+    transition: background-color 0.3s ease;
+}
+
+.focusable-body {
+    position: relative;
+    z-index: 1;
+    background-color: #4d4d4d;
+    color: #000000;
+    cursor: pointer;
+}
+
+.focusable-container {
+    position: relative;
+    z-index: 1;
+    background-color: #4d4d4d;
+    color: #000000;
+    cursor: pointer;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 4.5px solid #9b9b9b;
+    border-style: double;
+    border-radius: 10px;
+    background-color: var(--container-bg-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 17px;
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.slider {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 26px;
+    background-color: #ccc;
+    border-radius: 26px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.switch input:checked + .slider {
+    background-color: #4176b3;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(24px);
+}
+
+.switch input:focus + .slider {
+    box-shadow: 0 0 0 3px rgba(65, 118, 179, 0.4);
+}
+
+.slider.round {
+    border-radius: 26px;
+}
+
+.slider.round::before {
+    border-radius: 50%;
+}
+
+/* Tooltip */
+[id^="tooltip"],
+[id^="toolTip"] {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333333;
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    white-space: nowrap;
+    z-index: 10001;
+    pointer-events: none;
+}
+
+.visual-mode-enabled {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    z-index: 4;
+}
+
+body.vision-mode-enabled {
+    --text-color: #ffffff;
+    --bg-color: #000000;
+    --button-bg-color: #ffff00;
+    --button-hover-bg-color: #ffd400;
+    --div-bg-color: #000000;
+    --h1-color: #ffffff;
+    --container-bg-color: #000000;
+    --overlay-color: rgba(255, 255, 255, 0.2);
+    --links-color: #00ffff;
+    --section-bg-color: #000000;
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Visual Focus Highlighting */
+.highlighted {
+    outline: 3px solid #ffdd00;
+    outline-offset: 2px;
+    background-color: rgba(255, 221, 0, 0.15) !important;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color);
+    z-index: 9998;
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    #widgetFunction {
+        right: 10px;
+        top: 75px;
+    }
+
+    .widget-container {
+        width: calc(100vw - 40px);
+        max-width: 360px;
+    }
+
+    .button2 {
+        top: 15px;
+        right: 15px;
+    }
+}
