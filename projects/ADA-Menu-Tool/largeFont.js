@@ -1,16 +1,24 @@
 // Font Size Increase
-const initLargeFont = () => {
-  const toggle = document.getElementById("font_size_switch");
-  if (!toggle) return;
+(function() {
+    const initLargeFont = () => {
+        const toggle = document.getElementById("font_size_switch");
+        if (!toggle) return;
 
-  toggle.addEventListener("change", () => {
-    document.documentElement.style.fontSize = toggle.checked ? "120%" : "";
-  });
-};
+        // Clear any old listeners to prevent double-scaling
+        toggle.onchange = () => {
+            document.documentElement.style.fontSize = toggle.checked ? "125%" : "100%";
+        };
+    };
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initLargeFont);
-} else {
-  initLargeFont();
-}
+    // Watch for when the widget is added to the page
+    const observer = new MutationObserver(() => {
+        if (document.getElementById("font_size_switch")) {
+            initLargeFont();
+        }
+    });
 
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Try once immediately just in case
+    initLargeFont();
+})();
