@@ -147,7 +147,6 @@ body {
 .slider.round:before { 
   border-radius: 50% !important; 
 } 
-
 /* ============================================================ 
    3. DARK MODE & HIGH CONTRAST (VISION) 
    ============================================================ */ 
@@ -174,10 +173,18 @@ body.vision-mode-enabled #widgetFunction strong {
   color: #ffff00 !important; 
 } 
 
+/* FIX: Forces a high-contrast yellow background when hovering options in High Contrast Mode */
+body.vision-mode-enabled .ada-widget-list p:hover,
+body.vision-mode-enabled .ada-widget-list p:hover strong {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 10px #ffff00 !important;
+}
+
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
-/* 4a. Persistent Screen Dimming (Locks the dark curtain over the whole site instantly) */ 
+/* 4a. Persistent Screen Dimming */ 
 body.visual-focus-active::before { 
   content: "" !important; 
   position: fixed !important; 
@@ -185,14 +192,14 @@ body.visual-focus-active::before {
   left: 0 !important; 
   width: 100vw !important; 
   height: 100vh !important; 
-  background-color: rgba(0, 0, 0, 0.75) !important; /* The dimming layer */ 
-  z-index: 10000 !important; /* Sits right below your widget */ 
-  pointer-events: none !important; /* Allows you to click through it */ 
+  background-color: rgba(0, 0, 0, 0.75) !important; 
+  z-index: 10000 !important; 
+  pointer-events: none !important; 
 } 
 
-/* 4b. Persistent Widget Dimming (Dims the inside of the menu automatically) */ 
+/* 4b. Persistent Widget Dimming */ 
 .visual-focus-active #widgetFunction { 
-  background-color: rgba(25, 25, 25, 0.9) !important; /* Dark menu backdrop */ 
+  background-color: rgba(25, 25, 25, 0.9) !important; 
   border-color: #444 !important; 
 } 
 
@@ -203,7 +210,7 @@ body.visual-focus-active::before {
   transition: all 0.2s ease !important; 
 } 
 
-/* 4c. Main Page Spotlight (Lifts hovered website content into a bright white focus block) */ 
+/* 4c. Main Page Spotlight */ 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
 .visual-focus-active a:hover, 
@@ -222,25 +229,26 @@ body.visual-focus-active::before {
   cursor: crosshair !important; 
 } 
 
-/* 4d. Widget Option Spotlight (Lifts your menu options into a crisp highlight on hover) */ 
+/* 4d. Widget Option Spotlight (Modified to blend cleanly with High Contrast mode) */ 
 .visual-focus-active .ada-widget-list p:hover, 
 .visual-focus-active .ada-widget-list p strong:hover { 
   position: relative !important; 
   z-index: 10015 !important; 
-  background-color: #ffffff !important; 
   border-radius: 4px !important; 
   cursor: crosshair !important; 
   display: inline !important; 
   margin: 0 !important; 
   padding: 2px 6px !important; 
-  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9) !important; 
   transform: scale(1) !important; 
 } 
 
-/* Flips the active hovered text name to sharp black for maximum legibility */ 
-.visual-focus-active .ada-widget-list p:hover strong { 
+/* Handles standard Visual Focus background coloring (White block, black text) */
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover,
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong {
+  background-color: #ffffff !important; 
   color: #000000 !important; 
-} 
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9) !important; 
+}
 
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
