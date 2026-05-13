@@ -75,6 +75,19 @@ body.vision-mode-enabled {
     --section-bg-color: #000000 !important;
 }
 
+/* Ensure the Widget itself follows High Contrast */
+body.vision-mode-enabled #widgetFunction {
+    background-color: #000000 !important;
+    border: 2px solid #ffff00 !important;
+    color: #ffff00 !important;
+}
+
+/* Ensure the buttons inside the widget are visible */
+body.vision-mode-enabled #widgetFunction button,
+body.vision-mode-enabled #widgetFunction span {
+    color: #ffff00 !important;
+}
+
 /* ============================================================
    4. Visual Assist Spotlight
    ============================================================ */
