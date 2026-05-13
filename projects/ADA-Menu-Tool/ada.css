@@ -175,14 +175,6 @@ body.vision-mode-enabled #widgetFunction h3 strong {
   color: #ffff00 !important; 
 } 
 
-/* FIXED: Blocks high-contrast background highlights from activating unless Visual Focus is active */ 
-body.vision-mode-enabled:not(.visual-focus-active) .ada-widget-list p:hover, 
-body.vision-mode-enabled:not(.visual-focus-active) .ada-widget-list p:hover strong { 
-  background-color: transparent !important;
-  color: #ffff00 !important;
-  box-shadow: none !important;
-} 
-
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
@@ -199,20 +191,20 @@ body.visual-focus-active::before {
   pointer-events: none !important; 
 } 
 
-/* 4b. Persistent Widget Dimming (Skips dimming background if High Contrast mode is already active) */ 
+/* 4b. Persistent Widget Dimming (Skips background tint when High Contrast mode is active) */ 
 body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction { 
   background-color: rgba(25, 25, 25, 0.9) !important; 
   border-color: #444 !important; 
 } 
 
-/* Forces all idle text inside the dimmed widget to turn white (Only if High Contrast mode is off) */ 
+/* Forces all text labels inside the dimmed widget to turn white (Only if High Contrast is off) */ 
 body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction h3 strong, 
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong { 
   color: #ffffff !important; 
   transition: all 0.2s ease !important; 
 } 
 
-/* 4c. Main Page Spotlight */ 
+/* 4c. Main Page Spotlight Tracking Layout */ 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
 .visual-focus-active a:hover, 
@@ -231,7 +223,7 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong {
   cursor: crosshair !important; 
 } 
 
-/* 4d. Widget Option Spotlight Framework */ 
+/* 4d. Cleaned Widget Option Spotlight Container Framework */ 
 .visual-focus-active .ada-widget-list p:hover, 
 .visual-focus-active .ada-widget-list p strong:hover { 
   position: relative !important; 
@@ -244,7 +236,7 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong {
   transform: scale(1) !important; 
 } 
 
-/* Standard Mode: White highlight box with crisp black text */ 
+/* Standard Focus Mode Override: Renders a single white block with crisp black text */ 
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover, 
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong { 
   background-color: #ffffff !important; 
@@ -252,12 +244,9 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover stro
   box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9) !important; 
 } 
 
-/* Flips standard hovered text name to sharp black for maximum legibility */ 
-body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong { 
-  color: #000000 !important; 
-} 
-
-/* HIGH CONTRAST MODE SPECIFIC FIX: Changes the hover block to solid black with yellow text */
+/* HIGH CONTRAST FOCUS MODE MERGE: Erases duplicate white shapes to build a clean solid black target row */
+body.vision-mode-enabled .ada-widget-list p:hover,
+body.vision-mode-enabled .ada-widget-list p:hover strong,
 body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover,
 body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong {
   background-color: #000000 !important; 
