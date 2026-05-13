@@ -71,7 +71,7 @@ body {
   align-items: center !important;
   gap: 10px !important;
   margin-bottom: 8px !important;
-  position: relative !important; 
+  position: relative !important;
   z-index: 10011 !important; /* Forces toggle options above the backdrop overlay */
 }
 
@@ -98,7 +98,7 @@ body {
   left: 0 !important;
   margin: 0 !important;
   cursor: pointer !important;
-  z-index: 2 !important; 
+  z-index: 2 !important;
 }
 
 .slider {
@@ -135,8 +135,13 @@ body {
   outline-offset: 2px !important;
 }
 
-.slider.round { border-radius: 34px !important; }
-.slider.round:before { border-radius: 50% !important; }
+.slider.round {
+  border-radius: 34px !important;
+}
+
+.slider.round:before {
+  border-radius: 50% !important;
+}
 
 /* ============================================================
    3. DARK MODE & HIGH CONTRAST (VISION)
@@ -158,9 +163,9 @@ body.vision-mode-enabled #widgetFunction {
   color: #ffff00 !important;
 }
 
-body.vision-mode-enabled #widgetFunction span, 
-body.vision-mode-enabled #widgetFunction label, 
-body.vision-mode-enabled #widgetFunction strong, 
+body.vision-mode-enabled #widgetFunction span,
+body.vision-mode-enabled #widgetFunction label,
+body.vision-mode-enabled #widgetFunction strong,
 body.vision-mode-enabled #widgetFunction h3 strong {
   color: #ffff00 !important;
 }
@@ -171,8 +176,10 @@ body.vision-mode-enabled #widgetFunction h3 strong {
 body.visual-focus-active::before {
   content: "" !important;
   position: fixed !important;
-  top: 0 !important; left: 0 !important;
-  width: 100vw !important; height: 100vh !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
   background-color: rgba(0, 0, 0, 0.75) !important;
   z-index: 10000 !important; /* Drops under widget layout elements but over page code */
   pointer-events: none !important;
@@ -183,18 +190,18 @@ body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction {
   border-color: #444 !important;
 }
 
-body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction h3 strong, 
+body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction h3 strong,
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong {
   color: #ffffff !important;
   transition: all 0.2s ease !important;
 }
 
-.visual-focus-active h1:hover, 
-.visual-focus-active h2:hover, 
-.visual-focus-active a:hover, 
-.visual-focus-active span:not(#widgetFunction span):hover, 
-.visual-focus-active img:hover, 
-.visual-focus-active li:not(.ada-widget-list li):hover, 
+.visual-focus-active h1:hover,
+.visual-focus-active h2:hover,
+.visual-focus-active a:hover,
+.visual-focus-active span:not(#widgetFunction span):hover,
+.visual-focus-active img:hover,
+.visual-focus-active li:not(.ada-widget-list li):hover,
 .visual-focus-active p:not(.ada-widget-list p):hover {
   position: relative !important;
   z-index: 10005 !important;
@@ -208,7 +215,7 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong {
 }
 
 /* FIX: inline-block blocks structural collapsing errors when text elements are hovered */
-.visual-focus-active .ada-widget-list p:hover, 
+.visual-focus-active .ada-widget-list p:hover,
 .visual-focus-active .ada-widget-list p strong:hover {
   position: relative !important;
   z-index: 10015 !important;
@@ -220,7 +227,7 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong {
   transform: scale(1) !important;
 }
 
-body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover, 
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover,
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong {
   background-color: #ffffff !important;
   color: #000000 !important;
@@ -231,7 +238,7 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover stro
   color: #000000 !important;
 }
 
-body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover, 
+body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover,
 body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong {
   background-color: #000000 !important;
   color: #ffff00 !important;
@@ -255,28 +262,43 @@ body.visual-focus-active.vision-mode-enabled #widgetFunction h3 strong {
 /* ============================================================
    6. FONT SCALING
    ============================================================ */
-body.font-size-adjusted p, body.font-size-adjusted h1, body.font-size-adjusted h2, body.font-size-adjusted li, body.font-size-adjusted a, body.font-size-adjusted span, body.font-size-adjusted strong {
+body.font-size-adjusted p,
+body.font-size-adjusted h1,
+body.font-size-adjusted h2,
+body.font-size-adjusted li,
+body.font-size-adjusted a,
+body.font-size-adjusted span,
+body.font-size-adjusted strong {
   font-size: 1.25em !important;
   line-height: 1.6 !important;
 }
 
 /* ============================================================
-   7. TOOLTIP STYLING
+   7. TOOLTIP STYLING (UPDATED FOR MOUSE TRACKING)
    ============================================================ */
-li:not(.ada-widget-list li) { position: relative; }
-
-[id^="tooltip"], [id^="toolTip"] {
-  position: absolute;
-  left: 110%; top: 50%;
-  transform: translateY(-50%);
-  background: #333; color: #fff;
-  padding: 6px 12px; border-radius: 4px; font-size: 12px;
-  white-space: nowrap; z-index: 10015;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  pointer-events: none;
+li:not(.ada-widget-list li) {
+  position: relative;
 }
 
-body.vision-mode-enabled [id^="tooltip"], body.vision-mode-enabled [id^="toolTip"] {
-  background: #ffff00 !important; color: #000000 !important;
-  border: 1px solid #000; font-weight: bold;
+/* Base tooltip container setup */
+[id^="tooltip"], [id^="toolTip"] {
+  position: fixed !important; /* Forces layout calculations outside container borders */
+  background: #333;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10055 !important; /* Floats strictly on top of everything inside the menu window */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  pointer-events: none; /* Crucial: Prevents tooltip box from blocking hover inputs */
+}
+
+/* High Contrast Override theme profiles */
+body.vision-mode-enabled [id^="tooltip"],
+body.vision-mode-enabled [id^="toolTip"] {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  font-weight: bold;
 }
