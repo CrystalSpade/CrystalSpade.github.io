@@ -27,7 +27,7 @@
                 }
 
                 // 2. Load the scripts that make the buttons work
-                const scripts = ["DraggableDialogue.js", "floatingMenu.js", "darkMode.js", "highContrast.js", "largeFont.js"];
+                const scripts = ["DraggableDialogue.js", "floatingMenu.js", "darkMode.js", "highContrast.js", "largeFont.js", "visualAssist.js"];
                 scripts.forEach(file => {
                     const s = document.createElement("script");
                     s.src = assetBase + file;
