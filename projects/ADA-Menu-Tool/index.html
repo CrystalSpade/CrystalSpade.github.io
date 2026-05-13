@@ -1,3 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADA Accessibility Work | Gabrielle Johnson</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --accent: #3758f9;
+      --accent-dark: #243bb5;
+      --border: #dfe4ea;
+      --soft: #eef2ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 1rem;
+      background: var(--text);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      z-index: 100;
+      border-radius: 0.5rem;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+    }
+
+    header {
+      background: linear-gradient(135deg, #172033, #3758f9);
+      color: #fff;
+      padding: 4rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      max-width: 780px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.25rem);
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #eef2ff;
+      margin-bottom: 1.5rem;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.85rem 1rem;
+      border-radius: 0.75rem;
+      border: 2px solid transparent;
+      background: #fff;
+      color: #172033;
+      font-weight: 700;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    main {
+      padding: 3rem 1.5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42,
+
 <script src="ada-init.js"></script>
 
 
