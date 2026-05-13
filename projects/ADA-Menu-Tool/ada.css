@@ -96,7 +96,7 @@ body {
   width: 0 !important; 
   height: 0 !important; 
   position: absolute !important; 
-  z-index: -1 !important;        
+  z-index: -1 !important; 
 } 
 
 /* The visible toggle slider track */ 
@@ -177,34 +177,33 @@ body.vision-mode-enabled #widgetFunction strong {
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
+/* 4a. Persistent Screen Dimming (Locks the dark curtain over the whole site instantly) */ 
+body.visual-focus-active::before { 
+  content: "" !important; 
+  position: fixed !important; 
+  top: 0 !important; 
+  left: 0 !important; 
+  width: 100vw !important; 
+  height: 100vh !important; 
+  background-color: rgba(0, 0, 0, 0.75) !important; /* The dimming layer */ 
+  z-index: 10000 !important; /* Sits right below your widget */ 
+  pointer-events: none !important; /* Allows you to click through it */ 
+} 
 
-/* 4a. Persistent Screen Dimming (Locks the dark curtain over the whole site instantly) */
-body.visual-focus-active::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  background-color: rgba(0, 0, 0, 0.75) !important; /* The dimming layer */
-  z-index: 10000 !important;                        /* Sits right below your widget */
-  pointer-events: none !important;                  /* Allows you to click through it */
-}
+/* 4b. Persistent Widget Dimming (Dims the inside of the menu automatically) */ 
+.visual-focus-active #widgetFunction { 
+  background-color: rgba(25, 25, 25, 0.9) !important; /* Dark menu backdrop */ 
+  border-color: #444 !important; 
+} 
 
-/* 4b. Persistent Widget Dimming (Dims the inside of the menu automatically) */
-.visual-focus-active #widgetFunction {
-  background-color: rgba(25, 25, 25, 0.9) !important; /* Dark menu backdrop */
-  border-color: #444 !important;
-}
+/* Forces all idle text inside the dimmed widget to turn white for clean contrast */ 
+.visual-focus-active #widgetFunction h3 strong, 
+.visual-focus-active .ada-widget-list p strong { 
+  color: #ffffff !important; 
+  transition: all 0.2s ease !important; 
+} 
 
-/* Forces all idle text inside the dimmed widget to turn white for clean contrast */
-.visual-focus-active #widgetFunction h3 strong,
-.visual-focus-active .ada-widget-list p strong {
-  color: #ffffff !important;
-  transition: all 0.2s ease !important;
-}
-
-/* 4c. Main Page Spotlight (Lifts hovered website content into a bright white focus block) */
+/* 4c. Main Page Spotlight (Lifts hovered website content into a bright white focus block) */ 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
 .visual-focus-active a:hover, 
@@ -224,10 +223,10 @@ body.visual-focus-active::before {
 } 
 
 /* 4d. Widget Option Spotlight (Lifts your menu options into a crisp highlight on hover) */ 
-.visual-focus-active .ada-widget-list p:hover,
+.visual-focus-active .ada-widget-list p:hover, 
 .visual-focus-active .ada-widget-list p strong:hover { 
-  position: relative !important;
-  z-index: 10015 !important;        
+  position: relative !important; 
+  z-index: 10015 !important; 
   background-color: #ffffff !important; 
   border-radius: 4px !important; 
   cursor: crosshair !important; 
@@ -236,13 +235,12 @@ body.visual-focus-active::before {
   padding: 2px 6px !important; 
   box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9) !important; 
   transform: scale(1) !important; 
-}
+} 
 
-/* Flips the active hovered text name to sharp black for maximum legibility */
-.visual-focus-active .ada-widget-list p:hover strong {
-  color: #000000 !important;
-}
-
+/* Flips the active hovered text name to sharp black for maximum legibility */ 
+.visual-focus-active .ada-widget-list p:hover strong { 
+  color: #000000 !important; 
+} 
 
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
@@ -299,3 +297,4 @@ body.vision-mode-enabled [id^="toolTip"] {
   border: 1px solid #000; 
   font-weight: bold; 
 }
+
