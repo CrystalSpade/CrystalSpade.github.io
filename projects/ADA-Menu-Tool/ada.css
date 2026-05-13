@@ -32,13 +32,18 @@ body {
     height: 60px;
     border-radius: 50%;
     background-color: var(--button-bg-color);
-    z-index: 9999;
+    z-index: 10020; /* Highest layer */
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.button2:hover {
+    transform: scale(1.1);
 }
 
 #widgetFunction {
@@ -51,7 +56,7 @@ body {
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    z-index: 10010 !important;
+    z-index: 10010 !important; /* Above the spotlight */
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
@@ -70,28 +75,28 @@ body.dark-mode-enabled {
 /* High Contrast (Vision Mode) */
 body.vision-mode-enabled {
     --bg-color: #000000 !important;
-    --text-color: #ffff00 !important; /* Yellow text */
+    --text-color: #ffff00 !important; 
     --h1-color: #ffff00 !important;
     --section-bg-color: #000000 !important;
 }
 
-/* Ensure the Widget itself follows High Contrast */
+/* Ensure the Widget follows High Contrast */
 body.vision-mode-enabled #widgetFunction {
     background-color: #000000 !important;
-    border: 2px solid #ffff00 !important;
+    border: 3px solid #ffff00 !important;
     color: #ffff00 !important;
 }
 
-/* Ensure the buttons inside the widget are visible */
+/* Fix for buttons inside the widget during High Contrast */
 body.vision-mode-enabled #widgetFunction button,
-body.vision-mode-enabled #widgetFunction span {
+body.vision-mode-enabled #widgetFunction span,
+body.vision-mode-enabled #widgetFunction label {
     color: #ffff00 !important;
 }
 
 /* ============================================================
-   4. Visual Assist Spotlight
+   4. VISUAL ASSIST SPOTLIGHT (THE "CROWN JEWEL")
    ============================================================ */
-/* This isolates the hovered element using a massive box-shadow trick */
 .visual-focus-active p:hover, 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
@@ -100,28 +105,26 @@ body.vision-mode-enabled #widgetFunction span {
 .visual-focus-active span:hover,
 .visual-focus-active img:hover {
     position: relative;
-    z-index: 10005;
+    z-index: 10005; /* Below the menu (10010) */
     background-color: #ffffff !important;
     color: #000000 !important;
-    /* The 9999px shadow creates the "dimmed" effect everywhere else */
-    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5), 0 0 0 9999px rgba(0, 0, 0, 0.75);
+    /* Massive shadow dims everything else */
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5), 0 0 0 9999px rgba(0, 0, 0, 0.85);
     border-radius: 8px;
     padding: 5px;
-    transition: transform 0.2s ease;
-    transform: scale(1.02);
-    cursor: help;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: scale(1.03);
+    cursor: crosshair;
 }
 
 /* ============================================================
    5. DYNAMIC KEYBOARD NAVIGATION
    ============================================================ */
-/* Sharp Red Box that works on any auto-generated ID or focused element */
 .keyboard-nav-active *:focus {
     outline: 4px solid #cc0000 !important;
     outline-offset: 4px;
     background-color: rgba(204, 0, 0, 0.1) !important;
     box-shadow: 0 0 15px rgba(204, 0, 0, 0.6);
-    border-radius: 2px;
 }
 
 /* ============================================================
@@ -131,7 +134,8 @@ body.font-size-adjusted p,
 body.font-size-adjusted h1, 
 body.font-size-adjusted h2, 
 body.font-size-adjusted li, 
-body.font-size-adjusted a {
+body.font-size-adjusted a,
+body.font-size-adjusted span {
     font-size: 1.25em !important;
     line-height: 1.6 !important;
 }
