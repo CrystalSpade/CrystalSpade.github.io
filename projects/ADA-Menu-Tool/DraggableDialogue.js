@@ -1,36 +1,39 @@
 // Draggable Dialog
+(function() {
+    const initDraggable = () => {
+        const modal = document.getElementById("widgetFunction");
+        if (!modal) return;
 
-const initDraggableDialog = () => {
-    // We update this to match your widget's ID
-    const dragItem = document.getElementById("widgetFunction"); 
-    if (!dragItem) return;
+        // Use the H3 header as the "handle" to drag the box
+        const header = modal.querySelector('h3') || modal;
+        header.style.cursor = 'move';
 
-    let offsetX = 0;
-    let offsetY = 0;
-    let isDragging = false;
+        let offsetX, offsetY, isDragging = false;
 
-    // Use the header as the "handle" to drag
-    const header = dragItem.querySelector('h3') || dragItem;
-    header.style.cursor = 'move';
+        header.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            offsetX = e.clientX - modal.offsetLeft;
+            offsetY = e.clientY - modal.offsetTop;
+            modal.style.position = 'fixed';
+            modal.style.right = 'auto'; // Release the "pin" to the right side
+        });
 
-    header.addEventListener("mousedown", e => {
-        isDragging = true;
-        offsetX = e.clientX - dragItem.offsetLeft;
-        offsetY = e.clientY - dragItem.offsetTop;
-        dragItem.style.position = 'fixed'; // Ensure it stays pinned to the screen
+        document.addEventListener("mousemove", (e) => {
+            if (!isDragging) return;
+            modal.style.left = (e.clientX - offsetX) + "px";
+            modal.style.top = (e.clientY - offsetY) + "px";
+        });
+
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+    };
+
+    // Wait for the widget to load
+    const observer = new MutationObserver(() => {
+        if (document.getElementById("widgetFunction")) {
+            initDraggable();
+        }
     });
-
-    document.addEventListener("mousemove", e => {
-        if (!isDragging) return;
-        dragItem.style.left = `${e.clientX - offsetX}px`;
-        dragItem.style.top = `${e.clientY - offsetY}px`;
-        dragItem.style.right = 'auto'; // Disable the 'right' pin so it can move
-    });
-
-    document.addEventListener("mouseup", () => {
-        isDragging = false;
-    });
-};
-
-// Run after the widget is injected
-setTimeout(initDraggableDialog, 500);
+    observer.observe(document.body, { childList: true, subtree: true });
+})();
