@@ -1,32 +1,33 @@
 // ADA Loader with Auto-Reset Generation & Tooltip Event Core
 (function () {
-  const assetBase = "github.io";
-  
+  // CONFIGURATION: Set this to your live folder path or leave blank if testing locally
+  const assetBase = ""; 
+
   const initAdaWidget = () => {
     if (window.__ADA_WIDGET_LOADED__) return;
     window.__ADA_WIDGET_LOADED__ = true;
 
-    const container = document.getElementById('ada-widget-container');
+    let container = document.getElementById('ada-widget-container');
     
     fetch(assetBase + "ada-widget.html")
       .then(res => {
-        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+        if (!res.ok) throw new Error(`Failed to load widget structure: ${res.status}`);
         return res.text();
       })
       .then(html => {
-        // 1. Inject core HTML template using a highly accessible layer stacking priority
+        // 1. Safe layout deployment pass
         if (container) {
+          container.style.cssText = "position:fixed; top:20px; right:20px; z-index:10050 !important;";
           container.innerHTML = html;
         } else {
-          const div = document.createElement('div');
-          div.id = 'ada-widget-container';
-          // FIX: Upgraded z-index to 10050 to clear the spotlight masking layer (10000)
-          div.style.cssText = "position:fixed; top:20px; right:20px; z-index:10050 !important;";
-          div.innerHTML = html;
-          document.body.appendChild(div);
+          container = document.createElement('div');
+          container.id = 'ada-widget-container';
+          container.style.cssText = "position:fixed; top:20px; right:20px; z-index:10050 !important;";
+          container.innerHTML = html;
+          document.body.appendChild(container);
         }
 
-        // 2. DYNAMIC UPGRADE: Inject a responsive Reset Settings Button inside the container
+        // 2. DYNAMIC UPGRADE: Inject responsive Reset Settings Button inside container panel
         const targetContainer = document.getElementById('draggable') || document.getElementById('widgetFunction');
         if (targetContainer) {
           const resetBtn = document.createElement('button');
@@ -42,11 +43,10 @@
             switches.forEach(sw => {
               if (sw.checked) {
                 sw.checked = false;
-                // FIX: Changed to native change event tracking bubbling configurations
                 sw.dispatchEvent(new Event('change', { bubbles: true }));
               }
             });
-            // Force broadcast clear to wake up tracking scripts cleanly
+            // Fires state broadcast so all independent functional scripts clear their variables simultaneously
             document.dispatchEvent(new CustomEvent("adaStateChange"));
             console.log("ADA Framework: All accessibility features cleared.");
           });
@@ -68,14 +68,12 @@
 
           if (e.type === 'mouseover' || e.type === 'focusin') {
             tooltip.removeAttribute('hidden');
-            tooltip.style.display = 'block';
           } else {
             tooltip.setAttribute('hidden', '');
-            tooltip.style.display = 'none';
           }
         }
 
-        // 4. LOAD SUPPORT SCRIPTS AFTER GENERATION PASS
+        // 4. LOAD SUPPORT SCRIPTS SEQUENTIALLY
         const scripts = [
           "DraggableDialogue.js",
           "floatingMenu.js",
@@ -88,13 +86,13 @@
         scripts.forEach(file => {
           const s = document.createElement("script");
           s.src = assetBase + file;
-          s.defer = true; // FIX: Prevent execution sequence blocking traps
+          s.defer = true; 
           document.body.appendChild(s);
         });
 
-        console.log("ADA Widget loaded cohesively.");
+        console.log("ADA Widget engine loaded cohesively.");
       })
-      .catch(err => console.error("ADA Widget failed:", err));
+      .catch(err => console.error("ADA Engine Initialization Fault:", err));
   };
 
   if (document.readyState === "loading") {
@@ -103,4 +101,3 @@
     initAdaWidget();
   }
 })();
-
