@@ -1,24 +1,27 @@
 // Toggle Dark Mode
 (function() {
-    const initDarkMode = () => {
-        const toggle = document.getElementById("dark_mode_switch");
-        if (!toggle) return;
+  const SWITCH_ID = "dark_mode_switch";
+  const CLASS_NAME = "dark-mode-enabled";
 
-        // Use onchange so it only fires when someone actually clicks
-        toggle.onchange = () => {
-            document.body.classList.toggle("dark-mode-enabled", toggle.checked);
-        };
-    };
+  const initDarkMode = () => {
+    const toggle = document.getElementById(SWITCH_ID);
+    if (!toggle) return false;
 
-    // This "Observer" waits for the menu to be injected by your init script
-    const observer = new MutationObserver(() => {
-        if (document.getElementById("dark_mode_switch")) {
-            initDarkMode();
-        }
+    toggle.addEventListener("change", () => {
+      document.body.classList.toggle(CLASS_NAME, toggle.checked);
     });
+    return true;
+  };
 
-    observer.observe(document.body, { childList: true, subtree: true });
+  document.addEventListener("adaStateChange", () => {
+    const toggle = document.getElementById(SWITCH_ID);
+    document.body.classList.toggle(CLASS_NAME, toggle ? toggle.checked : false);
+  });
 
-    // Try once immediately just in case it's already there
-    initDarkMode();
+  if (initDarkMode()) return;
+  const observer = new MutationObserver((mutations, obs) => {
+    if (document.getElementById(SWITCH_ID)) { initDarkMode(); obs.disconnect(); }
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
+
