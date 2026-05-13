@@ -177,14 +177,13 @@ body.vision-mode-enabled #widgetFunction strong {
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
-
-/* 4a. Main Spotlight Target Activator */
+/* 4a. Main Spotlight Target Activator */ 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
 .visual-focus-active a:hover, 
 .visual-focus-active span:hover, 
-.visual-focus-active img:hover,
-.visual-focus-active li:not(.ada-widget-list li):hover,
+.visual-focus-active img:hover, 
+.visual-focus-active li:not(.ada-widget-list li):hover, 
 .visual-focus-active p:hover { 
   position: relative !important; 
   z-index: 10005 !important; 
@@ -197,18 +196,17 @@ body.vision-mode-enabled #widgetFunction strong {
   cursor: crosshair !important; 
 } 
 
-/* 4b. Widget Override (Catches the widget text and strips layout destructive rules) */
+/* 4b. Widget Override (Catches widget text and lifts it safely over the dark overlay) */ 
 .visual-focus-active .ada-widget-list p:hover { 
-  z-index: 10015 !important; /* Forces it visually above the black overlay mask */ 
+  z-index: 10015 !important; /* Pushes text layer visually above dark overlay */ 
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5) !important; 
   border-radius: 4px !important; 
-  transform: scale(1) !important; /* Completely blocks text scaling */
-  
-  /* CRITICAL FORCE-INLINE (Stops text from shifting down below the switch) */ 
+  transform: scale(1) !important; /* Blocks text layout distortion stretching */ 
+  /* CRITICAL FORCE-INLINE (Maintains row alignment beside the toggle switches) */ 
   display: inline !important; 
   margin: 0 !important; 
   padding: 2px 4px !important; 
-}
+} 
 
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
@@ -265,4 +263,3 @@ body.vision-mode-enabled [id^="toolTip"] {
   border: 1px solid #000; 
   font-weight: bold; 
 }
-
