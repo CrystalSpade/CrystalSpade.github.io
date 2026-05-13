@@ -1,70 +1,56 @@
-// ADA Widget Loader
-
+// ADA Loader
 (function () {
-  const resolveScriptUrl = () => {
-    if (document.currentScript && document.currentScript.src) {
-      return document.currentScript.src;
+    // Direct link to your project folder to avoid path errors
+    const assetBase = "https://crystalspade.github.io/projects/ADA-Menu-Tool/";
+
+    const initAdaWidget = () => {
+        if (window.__ADA_WIDGET_LOADED__) return;
+        window.__ADA_WIDGET_LOADED__ = true;
+
+        // 1. Load the CSS
+        const css = document.createElement("link");
+        css.rel = "stylesheet";
+        css.href = assetBase + "ada.css";
+        document.head.appendChild(css);
+
+        // 2. Inject the HTML into your container
+        const container = document.getElementById('ada-widget-container');
+        
+        fetch(assetBase + "ada-widget.html")
+            .then(res => {
+                if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+                return res.text();
+            })
+            .then(html => {
+                if (container) {
+                    container.innerHTML = html;
+                } else {
+                    // Safety fallback: if no container, add to end of body
+                    document.body.insertAdjacentHTML("beforeend", html);
+                }
+
+                // 3. Load all the functional scripts
+                const scripts = [
+                    "DraggableDialogue.js",
+                    "floatingMenu.js",
+                    "darkMode.js",
+                    "highContrast.js",
+                    "largeFont.js"
+                ];
+
+                scripts.forEach(file => {
+                    const s = document.createElement("script");
+                    s.src = assetBase + file;
+                    document.body.appendChild(s);
+                });
+            })
+            .catch(err => console.error("ADA Widget failed:", err));
+    };
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initAdaWidget);
+    } else {
+        initAdaWidget();
     }
-
-    const scripts = Array.from(document.getElementsByTagName("script"));
-    const match = scripts
-      .map(script => script.src)
-      .filter(Boolean)
-      .find(src => src.includes("ada-init.js"));
-
-    return match || new URL("ada-init.js", document.baseURI).href;
-  };
-
-  const scriptUrl = new URL(resolveScriptUrl(), document.baseURI);
-  const assetBase = new URL("./", scriptUrl);
-
-  const initAdaWidget = () => {
-    // Prevent double-loading
-    if (window.__ADA_WIDGET_LOADED__) return;
-    window.__ADA_WIDGET_LOADED__ = true;
-
-    // 1. Load CSS
-    const css = document.createElement("link");
-    css.rel = "stylesheet";
-    css.href = new URL("ada.css", assetBase).href;
-    document.head.appendChild(css);
-
-    // 2. Inject widget HTML
-    fetch(new URL("ada-widget.html", assetBase).href)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`Failed to load ADA widget HTML: ${res.status}`);
-        }
-        return res.text();
-      })
-      .then(html => {
-        document.body.insertAdjacentHTML("beforeend", html);
-
-        // 3. Load feature scripts AFTER widget exists
-        const scripts = [
-          "DraggableDialogue.js",
-          "FullscreenPopup.js",
-          "floatingMenu.js",
-          "darkMode.js",
-          "highContrast.js",
-          "largeFont.js",
-          "visualAssist.js",
-          "keyboardNav.js",
-          "toolTips.js"
-        ];
-
-        scripts.forEach(file => {
-          const s = document.createElement("script");
-          s.src = new URL(file, assetBase).href;
-          document.body.appendChild(s);
-        });
-      })
-      .catch(err => console.error("ADA Widget failed to load:", err));
-  };
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initAdaWidget);
-  } else {
-    initAdaWidget();
-  }
+})();
 })();
