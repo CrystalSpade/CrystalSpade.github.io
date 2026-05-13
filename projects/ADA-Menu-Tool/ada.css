@@ -17,16 +17,16 @@ body {
     background-color: var(--bg-color);
 }
 
-/* The floating button */
+/* 1. The Floating Circle Button */
 .button2 {
-    position: fixed;   /* Keeps it in the corner even when scrolling */
-    top: 20px;         /* Distance from top */
-    right: 20px;       /* Distance from right */
+    position: fixed;
+    top: 20px;
+    right: 20px;
     width: 60px;
     height: 60px;
-    border-radius: 50%; /* Makes it a circle */
-    background-color: #4176b3; 
-    z-index: 9999;     /* Keeps it on top of everything */
+    border-radius: 50%;
+    background-color: #4176b3;
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +35,7 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* The actual menu box */
+/* 2. The Actual Menu Box */
 #widgetFunction {
     position: fixed;
     top: 85px;
@@ -50,18 +50,18 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* 3. Dark Mode Logic */
+/* 3. Dark Mode Logic - FIXED (No space between body and dot) */
 body.dark-mode-enabled {
     background-color: #121212 !important;
     color: #ffffff !important;
 }
 
-/* Isolating the text blocks - added commas for your baby! */
+/* 4. Florence Spotlight - FIXED (The Baby) */
 .visual-focus-active p:hover, 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
-.visual-focus-active li:hover,
-.visual-focus-active a:hover,
+.visual-focus-active li:hover, 
+.visual-focus-active a:hover, 
 .visual-focus-active span:hover {
     position: relative;
     z-index: 10005;
@@ -75,9 +75,9 @@ body.dark-mode-enabled {
     transform: scale(1.02);
 }
 
-/* Sharp Red Box for Keyboard Navigation */
+/* 5. Sharp Red Box for Keyboard Navigation */
 .keyboard-nav-active *:focus {
-    outline: 4px solid #cc0000 !important; /* Slightly deeper red for professional look */
+    outline: 4px solid #cc0000 !important;
     outline-offset: 4px;
     background-color: rgba(204, 0, 0, 0.05) !important;
     box-shadow: 0 0 10px rgba(204, 0, 0, 0.4);
