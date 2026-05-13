@@ -1,19 +1,12 @@
 // ADA Loader
 (function () {
-    // Direct link to your project folder to avoid path errors
     const assetBase = "https://crystalspade.github.io/projects/ADA-Menu-Tool/";
 
     const initAdaWidget = () => {
         if (window.__ADA_WIDGET_LOADED__) return;
         window.__ADA_WIDGET_LOADED__ = true;
 
-        // 1. Load the CSS
-        const css = document.createElement("link");
-        css.rel = "stylesheet";
-        css.href = assetBase + "ada.css";
-        document.head.appendChild(css);
-
-        // 2. Inject the HTML into your container
+        // 1. Inject the HTML into your container
         const container = document.getElementById('ada-widget-container');
         
         fetch(assetBase + "ada-widget.html")
@@ -25,19 +18,16 @@
                 if (container) {
                     container.innerHTML = html;
                 } else {
-                    // Safety fallback: if no container, add to end of body
-                    document.body.insertAdjacentHTML("beforeend", html);
+                    // If you forgot the div, we'll make a floating one for you
+                    const div = document.createElement('div');
+                    div.id = 'ada-widget-container';
+                    div.style.cssText = "position:fixed; top:20px; right:20px; z-index:9999;";
+                    div.innerHTML = html;
+                    document.body.appendChild(div);
                 }
 
-                // 3. Load all the functional scripts
-                const scripts = [
-                    "DraggableDialogue.js",
-                    "floatingMenu.js",
-                    "darkMode.js",
-                    "highContrast.js",
-                    "largeFont.js"
-                ];
-
+                // 2. Load the scripts that make the buttons work
+                const scripts = ["DraggableDialogue.js", "floatingMenu.js", "darkMode.js", "highContrast.js", "largeFont.js"];
                 scripts.forEach(file => {
                     const s = document.createElement("script");
                     s.src = assetBase + file;
@@ -52,5 +42,4 @@
     } else {
         initAdaWidget();
     }
-})();
 })();
