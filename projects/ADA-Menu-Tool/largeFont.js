@@ -4,21 +4,20 @@
         const toggle = document.getElementById("font_size_switch");
         if (!toggle) return;
 
-        // Clear any old listeners to prevent double-scaling
         toggle.onchange = () => {
-            document.documentElement.style.fontSize = toggle.checked ? "125%" : "100%";
+            // This hooks directly into Section 6 of your CSS
+            document.body.classList.toggle("font-size-adjusted", toggle.checked);
+            console.log("Font Scaling:", toggle.checked ? "Enabled" : "Disabled");
         };
     };
 
-    // Watch for when the widget is added to the page
-    const observer = new MutationObserver(() => {
+    const observer = new MutationObserver((mutations, obs) => {
         if (document.getElementById("font_size_switch")) {
             initLargeFont();
+            obs.disconnect(); // Clean up the observer
         }
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
-
-    // Try once immediately just in case
     initLargeFont();
 })();
