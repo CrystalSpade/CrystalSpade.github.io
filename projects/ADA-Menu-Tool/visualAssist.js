@@ -1,36 +1,36 @@
 (function() {
     const initVisualAssist = () => {
-        // Targets the switch by ID or Name attribute
         const toggle = document.getElementById("visual_focus_switch") || 
                        document.getElementsByName("visualFocus")[0];
 
         if (!toggle) return;
 
-        toggle.onchange = () => {
-            // Toggles the class that triggers the "Crown Jewel" CSS shadow logic
+        // Use 'change' event for better checkbox compatibility
+        toggle.addEventListener('change', () => {
             const isActive = toggle.checked;
+            
+            // This MUST match the class name in your Section 4 of ada.css
             document.body.classList.toggle("visual-focus-active", isActive);
 
-            // Logic to prevent the spotlight from getting "stuck" when turning it off
             if (!isActive) {
-                console.log("Visual Assist Disabled - Resetting View");
+                console.log("Crown Jewel: Disengaged");
             } else {
-                console.log("Crown Jewel Active - Spotlight Engaged");
+                console.log("Crown Jewel: Spotlight Active");
             }
-        };
+        });
     };
 
-    // This keeps the script alive even if the widget is injected later
-    const observer = new MutationObserver(() => {
-        const toggle = document.getElementById("visual_focus_switch") || 
-                       document.getElementsByName("visualFocus")[0];
+    // The Observer: Waits for the separate widget HTML to load
+    const observer = new MutationObserver((mutations, obs) => {
+        const toggle = document.getElementById("visual_focus_switch");
         if (toggle) {
             initVisualAssist();
+            obs.disconnect(); // Stop observing once we've found and hooked the button
         }
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
 
-    // Run once on load just in case the widget is already there
+    // Initial check
     initVisualAssist();
 })();
