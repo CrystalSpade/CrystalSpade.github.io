@@ -32,7 +32,7 @@ body {
   height: 60px;
   border-radius: 50%;
   background-color: var(--button-bg-color);
-  z-index: 10020; /* Safely above dimming layers */
+  z-index: 10020; /* Top Layer */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,25 +56,28 @@ body {
   border: 2px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  z-index: 10010 !important; /* Above spotlight mask layer */
+  z-index: 10010 !important; /* Above Spotlight shadow */
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
+/* Container settings */
 .ada-widget-list {
   list-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
+/* Row alignment settings */
 .ada-widget-list li {
   display: flex !important;
   align-items: center !important;
   gap: 10px !important;
   margin-bottom: 8px !important;
-  position: relative !important;
-  z-index: 10011 !important; /* Forces items above background dim layer */
+  position: relative !important; /* FIXED: Keeps list elements clickable above screen dim layer */
+  z-index: 10011 !important;
 }
 
+/* Text inline settings */
 .ada-widget-list li p {
   margin: 0 !important;
 }
@@ -88,7 +91,7 @@ body {
   flex-shrink: 0 !important;
 }
 
-/* FIX: Input fills container entirely so mouse hover/clicks register properly */
+/* FIXED: Changed from 0x0 size to 100% dimensions so your mouse hovers trigger the spotlight */
 .switch input {
   opacity: 0 !important;
   width: 100% !important;
@@ -98,11 +101,13 @@ body {
   left: 0 !important;
   margin: 0 !important;
   cursor: pointer !important;
-  z-index: 2 !important; /* Floats over slider track */
+  z-index: 2 !important;
 }
 
+/* The visible toggle slider track */
 .slider {
   position: absolute !important;
+  cursor: pointer !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
@@ -112,6 +117,7 @@ body {
   z-index: 1 !important;
 }
 
+/* The actual white circular handle inside the slider */
 .slider:before {
   position: absolute !important;
   content: "" !important;
@@ -124,19 +130,23 @@ body {
   z-index: 1 !important;
 }
 
+/* Background color changes when the checkbox is checked */
 .switch input:checked + .slider {
   background-color: var(--button-bg-color) !important;
 }
 
+/* Move the white circular handle to the right when checked */
 .switch input:checked + .slider:before {
   transform: translateX(24px) !important;
 }
 
+/* Keyboard focus styling for accessibility */
 .switch input:focus-visible + .slider {
   outline: 2px solid var(--text-color) !important;
   outline-offset: 2px !important;
 }
 
+/* Make the switch corners completely round */
 .slider.round {
   border-radius: 34px !important;
 }
@@ -165,17 +175,17 @@ body.vision-mode-enabled #widgetFunction {
   color: #ffff00 !important;
 }
 
-body.vision-mode-enabled #widgetFunction span,
-body.vision-mode-enabled #widgetFunction label,
-body.vision-mode-enabled #widgetFunction strong,
+body.vision-mode-enabled #widgetFunction span, 
+body.vision-mode-enabled #widgetFunction label, 
+body.vision-mode-enabled #widgetFunction strong, 
 body.vision-mode-enabled #widgetFunction h3 strong {
   color: #ffff00 !important;
 }
 
 /* ============================================================
-   4. VISUAL ASSIST SPOTLIGHT
+   4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL)
    ============================================================ */
-/* 4a. Screen Dimming Overlay */
+/* 4a. Persistent Screen Dimming */
 body.visual-focus-active::before {
   content: "" !important;
   position: fixed !important;
@@ -184,32 +194,33 @@ body.visual-focus-active::before {
   width: 100vw !important;
   height: 100vh !important;
   background-color: rgba(0, 0, 0, 0.75) !important;
-  z-index: 10000 !important; /* Below the widget menu framework */
+  z-index: 10000 !important;
   pointer-events: none !important;
 }
 
-/* 4b. Persistent Widget Dimming Rules */
+/* 4b. Persistent Widget Dimming (Skips background tint when High Contrast mode is active) */
 body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction {
   background-color: rgba(25, 25, 25, 0.9) !important;
   border-color: #444 !important;
 }
 
-body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction h3 strong,
+/* Forces all text labels inside the dimmed widget to turn white (Only if High Contrast is off) */
+body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction h3 strong, 
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong {
   color: #ffffff !important;
   transition: all 0.2s ease !important;
 }
 
 /* 4c. Main Page Spotlight Tracking Layout */
-.visual-focus-active h1:hover,
-.visual-focus-active h2:hover,
-.visual-focus-active a:hover,
-.visual-focus-active span:not(#widgetFunction span):hover,
-.visual-focus-active img:hover,
-.visual-focus-active li:not(.ada-widget-list li):hover,
+.visual-focus-active h1:hover, 
+.visual-focus-active h2:hover, 
+.visual-focus-active a:hover, 
+.visual-focus-active span:not(#widgetFunction span):hover, 
+.visual-focus-active img:hover, 
+.visual-focus-active li:not(.ada-widget-list li):hover, 
 .visual-focus-active p:not(.ada-widget-list p):hover {
   position: relative !important;
-  z-index: 10005 !important; /* Floats perfectly above dim layer */
+  z-index: 10005 !important;
   background-color: #ffffff !important;
   color: #000000 !important;
   box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.6) !important;
@@ -220,31 +231,34 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong {
 }
 
 /* 4d. Cleaned Widget Option Spotlight Container Framework */
-.visual-focus-active .ada-widget-list p:hover,
+.visual-focus-active .ada-widget-list p:hover, 
 .visual-focus-active .ada-widget-list p strong:hover {
   position: relative !important;
   z-index: 10015 !important;
   border-radius: 4px !important;
   cursor: crosshair !important;
-  /* FIX: inline-block prevents content boxes from collapsing on mouse roll-over */
-  display: inline-block !important; 
+  /* FIXED: inline-block preserves widths without collapsing text options on hover */
+  display: inline-block !important;
   margin: 0 !important;
   padding: 2px 6px !important;
   transform: scale(1) !important;
 }
 
-body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover,
+/* Standard Focus Mode Override: Renders a single white block with crisp black text */
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover, 
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong {
   background-color: #ffffff !important;
   color: #000000 !important;
   box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9) !important;
 }
 
+/* Flips standard hovered text name to sharp black for maximum legibility */
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong {
   color: #000000 !important;
 }
 
-body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover,
+/* HIGH CONTRAST FOCUS MODE MERGE: FIXED to ensure it only activates when BOTH switches are on */
+body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover, 
 body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong {
   background-color: #000000 !important;
   color: #ffff00 !important;
@@ -252,6 +266,7 @@ body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong {
   border: 1px solid #ffff00 !important;
 }
 
+/* Keeps the main title header anchored to bright yellow so it never washes out */
 body.visual-focus-active.vision-mode-enabled #widgetFunction h3 strong {
   color: #ffff00 !important;
 }
@@ -268,12 +283,12 @@ body.visual-focus-active.vision-mode-enabled #widgetFunction h3 strong {
 /* ============================================================
    6. FONT SCALING
    ============================================================ */
-body.font-size-adjusted p,
-body.font-size-adjusted h1,
-body.font-size-adjusted h2,
-body.font-size-adjusted li,
-body.font-size-adjusted a,
-body.font-size-adjusted span,
+body.font-size-adjusted p, 
+body.font-size-adjusted h1, 
+body.font-size-adjusted h2, 
+body.font-size-adjusted li, 
+body.font-size-adjusted a, 
+body.font-size-adjusted span, 
 body.font-size-adjusted strong {
   font-size: 1.25em !important;
   line-height: 1.6 !important;
@@ -286,6 +301,7 @@ li:not(.ada-widget-list li) {
   position: relative;
 }
 
+/* Anchor for tooltips */
 [id^="tooltip"], [id^="toolTip"] {
   position: absolute;
   left: 110%;
@@ -302,11 +318,12 @@ li:not(.ada-widget-list li) {
   pointer-events: none;
 }
 
-body.vision-mode-enabled [id^="tooltip"],
+body.vision-mode-enabled [id^="tooltip"], 
 body.vision-mode-enabled [id^="toolTip"] {
   background: #ffff00 !important;
   color: #000000 !important;
   border: 1px solid #000;
   font-weight: bold;
 }
+
 
