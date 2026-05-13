@@ -1,53 +1,55 @@
-<!-- ADA Widget -->
-<button id="openButton" class="button2" aria-label="Accessibility options">♿</button>
+<!-- ADA Widget Hard Template -->
+<button id="openButton" class="button2" aria-label="Accessibility options" aria-haspopup="true" aria-expanded="false">♿</button>
 
-<div id="widgetFunction" style="display:none;">
+<div id="widgetFunction" style="display:none;" role="dialog" aria-labelledby="widgetTitle">
   <div class="widget-container" id="draggable">
-    <h3 style="text-align: center;"><strong>Accessibility Options</strong></h3>
+    <h3 id="widgetTitle" style="text-align: center;"><strong>Accessibility Options</strong></h3>
     
-    <ul class="ada-widget-list">
+    <ul class="ada-widget-list" role="none">
       <li>
         <label class="switch" id="lblDarkMode">
-          <input type="checkbox" id="dark_mode_switch">
+          <input type="checkbox" id="dark_mode_switch" aria-describedby="tooltipDarkMode">
           <span class="slider round"></span>
         </label>
         <p><strong>Dark Mode</strong></p>
-        <div id="tooltipDarkMode" hidden>Enable dark mode</div>
+        <div id="tooltipDarkMode" hidden role="tooltip">Enable dark mode</div>
       </li>
+      
       <li>
         <label class="switch" id="lblVisionImpaired">
-          <input type="checkbox" id="vision_mode_switch">
+          <input type="checkbox" id="vision_mode_switch" aria-describedby="tooltipVisionMode">
           <span class="slider round"></span>
         </label>
         <p><strong>High Contrast</strong></p>
-        <div id="tooltipVisionMode" hidden>Enable high contrast mode</div>
+        <div id="tooltipVisionMode" hidden role="tooltip">Enable high contrast mode</div>
       </li>
+      
       <li>
         <label class="switch" id="lblFontSize">
-          <input type="checkbox" id="font_size_switch">
+          <input type="checkbox" id="font_size_switch" aria-describedby="tooltipFontSize">
           <span class="slider round"></span>
         </label>
         <p><strong>Font Size</strong></p>
-        <div id="tooltipFontSize" hidden>Increase text size</div>
+        <div id="tooltipFontSize" hidden role="tooltip">Increase text size</div>
       </li>
+      
       <li>
         <label class="switch" id="lblFocus">
-          <input type="checkbox" id="visual_focus_switch">
+          <input type="checkbox" id="visual_focus_switch" aria-describedby="toolTipVisualFocus">
           <span class="slider round"></span>
         </label>
         <p><strong>Visual Focus</strong></p>
-        <div id="toolTipVisualFocus" hidden>Highlight focused content</div>
+        <div id="toolTipVisualFocus" hidden role="tooltip">Highlight focused content</div>
       </li>
+      
       <li>
         <label class="switch" id="lblKeyboard">
-          <input type="checkbox" id="keyboard_nav_switch">
+          <input type="checkbox" id="keyboard_nav_switch" aria-describedby="tooltipKeyNav">
           <span class="slider round"></span>
         </label>
         <p><strong>Keyboard Navigation</strong></p>
-        <div id="tooltipKeyNav" hidden>Keyboard navigation help</div>
+        <div id="tooltipKeyNav" hidden role="tooltip">Keyboard navigation help</div>
       </li>
     </ul>
   </div>
 </div>
-
-<div class="overlay"></div>
