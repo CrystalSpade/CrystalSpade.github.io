@@ -274,7 +274,7 @@ body.font-size-adjusted strong {
 }
 
 /* ============================================================
-   7. TOOLTIP STYLING (UPDATED FOR MOUSE TRACKING)
+   7. TOOLTIP STYLING (SNAPPED UNDER MODE)
    ============================================================ */
 li:not(.ada-widget-list li) {
   position: relative;
@@ -282,20 +282,20 @@ li:not(.ada-widget-list li) {
 
 /* Base tooltip container setup */
 [id^="tooltip"], [id^="toolTip"] {
-  position: fixed !important; /* Forces layout calculations outside container borders */
+  position: fixed !important; /* Locks layout tracking parameters directly to viewport coordinates */
   background: #333;
   color: #fff;
   padding: 6px 12px;
   border-radius: 4px;
   font-size: 12px;
   white-space: nowrap;
-  z-index: 10055 !important; /* Floats strictly on top of everything inside the menu window */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  pointer-events: none; /* Crucial: Prevents tooltip box from blocking hover inputs */
+  z-index: 10055 !important; /* Floats safely on top of your widget boundaries */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  pointer-events: none; /* Prevents element frame from intercepting input actions */
 }
 
 /* High Contrast Override theme profiles */
-body.vision-mode-enabled [id^="tooltip"],
+body.vision-mode-enabled [id^="tooltip"], 
 body.vision-mode-enabled [id^="toolTip"] {
   background: #ffff00 !important;
   color: #000000 !important;
