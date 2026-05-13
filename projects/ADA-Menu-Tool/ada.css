@@ -170,7 +170,7 @@ body.vision-mode-enabled #widgetFunction {
 
 body.vision-mode-enabled #widgetFunction span, 
 body.vision-mode-enabled #widgetFunction label, 
-body.vision-mode-enabled #widgetFunction strong,
+body.vision-mode-enabled #widgetFunction strong, 
 body.vision-mode-enabled #widgetFunction h3 strong { 
   color: #ffff00 !important; 
 } 
@@ -244,21 +244,26 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover stro
   box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9) !important; 
 } 
 
-/* HIGH CONTRAST FOCUS MODE MERGE: Erases duplicate white shapes to build a clean solid black target row */
-body.vision-mode-enabled .ada-widget-list p:hover,
-body.vision-mode-enabled .ada-widget-list p:hover strong,
-body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover,
-body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong {
+/* Flips standard hovered text name to sharp black for maximum legibility */ 
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong { 
+  color: #000000 !important; 
+} 
+
+/* HIGH CONTRAST FOCUS MODE MERGE: Erases duplicate white shapes to build a clean solid black target row */ 
+body.vision-mode-enabled .ada-widget-list p:hover, 
+body.vision-mode-enabled .ada-widget-list p:hover strong, 
+body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover, 
+body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong { 
   background-color: #000000 !important; 
   color: #ffff00 !important; 
   box-shadow: 0 0 12px 2px #ffff00 !important; 
-  border: 1px solid #ffff00 !important;
-}
+  border: 1px solid #ffff00 !important; 
+} 
 
-/* Keeps the main title header anchored to bright yellow so it never washes out */
-body.visual-focus-active.vision-mode-enabled #widgetFunction h3 strong {
-  color: #ffff00 !important;
-}
+/* Keeps the main title header anchored to bright yellow so it never washes out */ 
+body.visual-focus-active.vision-mode-enabled #widgetFunction h3 strong { 
+  color: #ffff00 !important; 
+} 
 
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
