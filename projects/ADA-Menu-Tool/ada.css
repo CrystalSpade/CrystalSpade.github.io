@@ -72,6 +72,29 @@ body.vision-mode-enabled * {
     border-color: #ffff00 !important;
 }
 
+/* Visual Focus Spotlight Effect */
+.visual-focus-active * {
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* This dims the background while keeping the text readable */
+.visual-focus-active p:hover, 
+.visual-focus-active h1:hover, 
+.visual-focus-active h2:hover, 
+.visual-focus-active li:hover {
+    background-color: rgba(0, 0, 0, 0.7) !important; /* Dark drop back */
+    color: #00ff00 !important; /* Neon highlight text */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+}
+
+/* Keyboard Navigation Red Box */
+.keyboard-nav-active :focus {
+    outline: 3px solid #ff0000 !important; /* Red Box */
+    outline-offset: 2px;
+    box-shadow: 0 0 5px #ff0000;
+}
+
 /* 5. Visual Assist (Highlighting) */
 .highlighted {
     outline: 4px solid #ffff00 !important;
