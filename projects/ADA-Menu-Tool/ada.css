@@ -19,22 +19,20 @@ body {
 
 /* The floating button */
 .button2 {
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    background-color: var(--button-bg-color);
-    color: white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    border: none;
-    cursor: pointer;
-    z-index: 9999;
-    font-size: 24px;
+    position: fixed;   /* Keeps it in the corner even when scrolling */
+    top: 20px;         /* Distance from top */
+    right: 20px;       /* Distance from right */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #4176b3; 
+    z-index: 9999;     /* Keeps it on top of everything */
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 /* The actual menu box */
