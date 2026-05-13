@@ -177,39 +177,38 @@ body.vision-mode-enabled #widgetFunction strong {
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
-/* 4a. Global Spotlight Effect (For the main website content) */ 
-.visual-focus-active p:not(.ada-widget-list p):hover, 
+
+/* 4a. Main Spotlight Target Activator */
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
-.visual-focus-active li:not(.ada-widget-list li):hover, 
 .visual-focus-active a:hover, 
 .visual-focus-active span:hover, 
-.visual-focus-active img:hover { 
-  position: relative; 
-  z-index: 10005; 
+.visual-focus-active img:hover,
+.visual-focus-active li:not(.ada-widget-list li):hover,
+.visual-focus-active p:hover { 
+  position: relative !important; 
+  z-index: 10005 !important; 
   background-color: #ffffff !important; 
   color: #000000 !important; 
-  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5), 0 0 0 9999px rgba(0, 0, 0, 0.85); 
-  border-radius: 8px; 
-  padding: 5px; 
-  transform: scale(1.03); 
-  cursor: crosshair; 
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5), 0 0 0 9999px rgba(0, 0, 0, 0.85) !important; 
+  border-radius: 8px !important; 
+  padding: 5px !important; 
+  transform: scale(1.03) !important; 
+  cursor: crosshair !important; 
 } 
 
-/* 4b. SAFE Widget Spotlight Effect (Highlights text without breaking rows) */ 
+/* 4b. Widget Override (Catches the widget text and strips layout destructive rules) */
 .visual-focus-active .ada-widget-list p:hover { 
-  position: relative !important; 
-  z-index: 10015 !important; /* Keeps it above the shadow mask */ 
-  background-color: #ffffff !important; 
-  color: #000000 !important; 
+  z-index: 10015 !important; /* Forces it visually above the black overlay mask */ 
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5) !important; 
   border-radius: 4px !important; 
-  cursor: crosshair !important; 
-  /* CRITICAL FORCE-INLINE (Prevents the text from dropping below the switch) */ 
+  transform: scale(1) !important; /* Completely blocks text scaling */
+  
+  /* CRITICAL FORCE-INLINE (Stops text from shifting down below the switch) */ 
   display: inline !important; 
   margin: 0 !important; 
-  padding: 2px 4px !important; /* Small padding that won't break layout */ 
-} 
+  padding: 2px 4px !important; 
+}
 
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
