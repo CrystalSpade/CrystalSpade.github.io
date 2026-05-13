@@ -59,15 +59,17 @@
     document.addEventListener("mousemove", (e) => moveDrag(e.clientX, e.clientY));
     document.addEventListener("mouseup", () => isDragging = false);
 
-    // Mobile Phone & Tablet Touch Handlers (Corrected Coordinate Mapping Array)
+    // Mobile Phone & Tablet Touch Handlers (FIXED: Corrected index reading array)
     header.addEventListener("touchstart", (e) => {
       if (e.touches.length === 1) {
+        // Target the first finger index [0] to extract true layout coordinates
         startDrag(e.touches[0].clientX, e.touches[0].clientY);
       }
     }, { passive: true });
     
     document.addEventListener("touchmove", (e) => {
       if (isDragging && e.touches.length === 1) {
+        // Target the first finger index [0] to extract true layout coordinates
         moveDrag(e.touches[0].clientX, e.touches[0].clientY);
       }
     }, { passive: true });
