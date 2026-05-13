@@ -53,10 +53,9 @@
           targetContainer.appendChild(resetBtn);
         }
 
-        // 3. DYNAMIC UPGRADE: Follow-Mouse Tooltip & Keyboard Focus Engine
+        // 3. DYNAMIC UPGRADE: Snap-Under Element Tooltip & Keyboard Focus Engine
         document.addEventListener('mouseover', handleTooltipToggle);
         document.addEventListener('mouseout', handleTooltipToggle);
-        document.addEventListener('mousemove', handleTooltipMouseMove);
         document.addEventListener('focusin', handleTooltipToggle);
         document.addEventListener('focusout', handleTooltipToggle);
 
@@ -70,29 +69,16 @@
           if (e.type === 'mouseover' || e.type === 'focusin') {
             tooltip.removeAttribute('hidden');
             
-            // Keyboard tab focus fallback: static anchoring beneath the targeted row item
-            if (e.type === 'focusin') {
-              tooltip.style.position = 'absolute';
-              tooltip.style.left = '0px';
-              tooltip.style.top = '30px';
-            }
+            // Fetch real-time structural coordinates of the hovered row element
+            const bounds = row.getBoundingClientRect();
+            
+            // Snap the tooltip box perfectly below the left corner of the list item row
+            tooltip.style.position = 'fixed';
+            tooltip.style.left = bounds.left + 'px';
+            tooltip.style.top = (bounds.bottom + 4) + 'px'; // 4px padding cushion directly below
           } else {
             tooltip.setAttribute('hidden', '');
           }
-        }
-
-        // Live cursor metric tracking loop
-        function handleTooltipMouseMove(e) {
-          const row = e.target.closest('.ada-widget-list li');
-          if (!row) return;
-
-          const tooltip = row.querySelector('[id^="tooltip"], [id^="toolTip"]');
-          if (!tooltip || tooltip.hasAttribute('hidden')) return;
-
-          // Assign target bounding coordinates dynamically with a safe 15px pointer offset cusion
-          tooltip.style.position = 'fixed'; 
-          tooltip.style.left = (e.clientX + 15) + 'px'; 
-          tooltip.style.top = (e.clientY + 15) + 'px';  
         }
 
         // 4. LOAD SUPPORT SCRIPTS SEQUENTIALLY
