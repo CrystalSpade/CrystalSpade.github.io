@@ -4,21 +4,19 @@
         const toggle = document.getElementById("vision_mode_switch");
         if (!toggle) return;
 
-        // Use onchange to ensure it only fires when the user toggles it
         toggle.onchange = () => {
             document.body.classList.toggle("vision-mode-enabled", toggle.checked);
+            console.log("High Contrast:", toggle.checked ? "Activated" : "Deactivated");
         };
     };
 
-    // Watch for the widget to be added to the page
-    const observer = new MutationObserver(() => {
+    const observer = new MutationObserver((mutations, obs) => {
         if (document.getElementById("vision_mode_switch")) {
             initHighContrast();
+            obs.disconnect(); // <--- This is the "Pro" cleanup
         }
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
-
-    // Initial check just in case
     initHighContrast();
 })();
