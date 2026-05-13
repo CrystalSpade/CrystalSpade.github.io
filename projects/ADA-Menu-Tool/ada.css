@@ -56,12 +56,6 @@ body.dark-mode-enabled {
     color: #ffffff !important;
 }
 
-/* Fix for Line 57 */
-body.dark-mode-enabled {
-    background-color: #121212 !important;
-    color: #ffffff !important;
-}
-
 /* Isolating the text blocks - added commas for your baby! */
 .visual-focus-active p:hover, 
 .visual-focus-active h1:hover, 
