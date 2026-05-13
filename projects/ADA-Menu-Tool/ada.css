@@ -175,7 +175,7 @@ body.vision-mode-enabled #widgetFunction h3 strong {
   color: #ffff00 !important; 
 } 
 
-/* FIX: Forces a high-contrast yellow background when hovering options in High Contrast Mode */ 
+/* Forces a high-contrast yellow background when hovering options in High Contrast Mode */ 
 body.vision-mode-enabled .ada-widget-list p:hover, 
 body.vision-mode-enabled .ada-widget-list p:hover strong { 
   background-color: #ffff00 !important; 
@@ -255,7 +255,16 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover stro
 /* Flips standard hovered text name to sharp black for maximum legibility */ 
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong { 
   color: #000000 !important; 
-} 
+}
+
+/* HIGH CONTRAST SPECIFIC FIX: Prevents text from turning white over bright yellow highlights */
+body.visual-focus-active.vision-mode-enabled #widgetFunction h3 strong {
+  color: #ffff00 !important;
+}
+
+body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong {
+  color: #000000 !important;
+}
 
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
