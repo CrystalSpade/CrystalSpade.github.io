@@ -32,7 +32,7 @@ body {
     height: 60px;
     border-radius: 50%;
     background-color: var(--button-bg-color);
-    z-index: 10020; /* Highest layer */
+    z-index: 10020; /* Top Layer */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,9 +42,7 @@ body {
     transition: transform 0.2s ease;
 }
 
-.button2:hover {
-    transform: scale(1.1);
-}
+.button2:hover { transform: scale(1.1); }
 
 #widgetFunction {
     position: fixed;
@@ -56,46 +54,38 @@ body {
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    z-index: 10010 !important; /* Above the spotlight */
+    z-index: 10010 !important; /* Above Spotlight shadow */
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 /* ============================================================
    3. DARK MODE & HIGH CONTRAST (VISION)
    ============================================================ */
-/* Dark Mode */
 body.dark-mode-enabled {
     --bg-color: #121212 !important;
     --text-color: #ffffff !important;
     --container-bg-color: #1e1e1e !important;
-    --section-bg-color: #121212 !important;
-    --h1-color: #ffffff !important;
 }
 
-/* High Contrast (Vision Mode) */
 body.vision-mode-enabled {
     --bg-color: #000000 !important;
     --text-color: #ffff00 !important; 
-    --h1-color: #ffff00 !important;
-    --section-bg-color: #000000 !important;
 }
 
-/* Ensure the Widget follows High Contrast */
 body.vision-mode-enabled #widgetFunction {
     background-color: #000000 !important;
     border: 3px solid #ffff00 !important;
     color: #ffff00 !important;
 }
 
-/* Fix for buttons inside the widget during High Contrast */
-body.vision-mode-enabled #widgetFunction button,
 body.vision-mode-enabled #widgetFunction span,
-body.vision-mode-enabled #widgetFunction label {
+body.vision-mode-enabled #widgetFunction label,
+body.vision-mode-enabled #widgetFunction strong {
     color: #ffff00 !important;
 }
 
 /* ============================================================
-   4. VISUAL ASSIST SPOTLIGHT (THE "CROWN JEWEL")
+   4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL)
    ============================================================ */
 .visual-focus-active p:hover, 
 .visual-focus-active h1:hover, 
@@ -105,25 +95,22 @@ body.vision-mode-enabled #widgetFunction label {
 .visual-focus-active span:hover,
 .visual-focus-active img:hover {
     position: relative;
-    z-index: 10005; /* Below the menu (10010) */
+    z-index: 10005; 
     background-color: #ffffff !important;
     color: #000000 !important;
-    /* Massive shadow dims everything else */
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5), 0 0 0 9999px rgba(0, 0, 0, 0.85);
     border-radius: 8px;
     padding: 5px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     transform: scale(1.03);
     cursor: crosshair;
 }
 
 /* ============================================================
-   5. DYNAMIC KEYBOARD NAVIGATION
+   5. KEYBOARD NAVIGATION
    ============================================================ */
 .keyboard-nav-active *:focus {
     outline: 4px solid #cc0000 !important;
     outline-offset: 4px;
-    background-color: rgba(204, 0, 0, 0.1) !important;
     box-shadow: 0 0 15px rgba(204, 0, 0, 0.6);
 }
 
@@ -135,7 +122,8 @@ body.font-size-adjusted h1,
 body.font-size-adjusted h2, 
 body.font-size-adjusted li, 
 body.font-size-adjusted a,
-body.font-size-adjusted span {
+body.font-size-adjusted span,
+body.font-size-adjusted strong {
     font-size: 1.25em !important;
     line-height: 1.6 !important;
 }
@@ -143,23 +131,28 @@ body.font-size-adjusted span {
 /* ============================================================
    7. TOOLTIP STYLING
    ============================================================ */
-[id^="tooltip"] {
+li { position: relative; } /* Anchor for tooltips */
+
+[id^="tooltip"], [id^="toolTip"] {
     position: absolute;
+    left: 110%; /* Pop out to the left/right of the switch */
+    top: 50%;
+    transform: translateY(-50%);
     background: #333;
     color: #fff;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 4px;
     font-size: 12px;
     white-space: nowrap;
-    z-index: 10015; /* Higher than the menu */
-    margin-top: -30px; /* Position it above the text */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    pointer-events: none; /* Don't let the tooltip block the mouse */
+    z-index: 10015; /* Between Menu and Button */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    pointer-events: none;
 }
 
-/* Ensure tooltips are readable in High Contrast */
-body.vision-mode-enabled [id^="tooltip"] {
+body.vision-mode-enabled [id^="tooltip"],
+body.vision-mode-enabled [id^="toolTip"] {
     background: #ffff00 !important;
     color: #000000 !important;
     border: 1px solid #000;
+    font-weight: bold;
 }
