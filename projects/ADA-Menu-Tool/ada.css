@@ -1,3 +1,6 @@
+/* ============================================================
+   1. CORE VARIABLES & BASE STYLES
+   ============================================================ */
 :root {
     --text-color: #000000;
     --bg-color: #ffffff;
@@ -6,7 +9,6 @@
     --div-bg-color: #ffffff;
     --h1-color: #000000;
     --container-bg-color: #f9f9f9;
-    --overlay-color: rgba(0, 0, 0, 0);
     --links-color: #466991;
     --section-bg-color: #ffffff;
 }
@@ -15,9 +17,13 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
     color: var(--text-color);
     background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
 }
 
-/* 1. The Floating Circle Button */
+/* ============================================================
+   2. WIDGET UI (THE MENU & BUTTON)
+   ============================================================ */
 .button2 {
     position: fixed;
     top: 20px;
@@ -25,7 +31,7 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #4176b3;
+    background-color: var(--button-bg-color);
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -35,7 +41,6 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* 2. The Actual Menu Box */
 #widgetFunction {
     position: fixed;
     top: 85px;
@@ -50,36 +55,70 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* 3. Dark Mode Logic - FIXED (No space between body and dot) */
+/* ============================================================
+   3. DARK MODE & HIGH CONTRAST (VISION)
+   ============================================================ */
+/* Dark Mode */
 body.dark-mode-enabled {
-    background-color: #121212 !important;
-    color: #ffffff !important;
+    --bg-color: #121212 !important;
+    --text-color: #ffffff !important;
+    --container-bg-color: #1e1e1e !important;
+    --section-bg-color: #121212 !important;
+    --h1-color: #ffffff !important;
 }
 
-/* 4. Florence Spotlight - FIXED (The Baby) */
+/* High Contrast (Vision Mode) */
+body.vision-mode-enabled {
+    --bg-color: #000000 !important;
+    --text-color: #ffff00 !important; /* Yellow text */
+    --h1-color: #ffff00 !important;
+    --section-bg-color: #000000 !important;
+}
+
+/* ============================================================
+   4. THE CROWN JEWEL (FLORENCE SPOTLIGHT)
+   ============================================================ */
+/* This isolates the hovered element using a massive box-shadow trick */
 .visual-focus-active p:hover, 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
 .visual-focus-active li:hover, 
 .visual-focus-active a:hover, 
-.visual-focus-active span:hover {
+.visual-focus-active span:hover,
+.visual-focus-active img:hover {
     position: relative;
     z-index: 10005;
     background-color: #ffffff !important;
     color: #000000 !important;
-    /* The deep isolated shadow */
-    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3), 0 0 0 9999px rgba(0, 0, 0, 0.7); 
+    /* The 9999px shadow creates the "dimmed" effect everywhere else */
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5), 0 0 0 9999px rgba(0, 0, 0, 0.75);
     border-radius: 8px;
-    padding: 10px;
+    padding: 5px;
     transition: transform 0.2s ease;
     transform: scale(1.02);
+    cursor: help;
 }
 
-/* 5. Sharp Red Box for Keyboard Navigation */
+/* ============================================================
+   5. DYNAMIC KEYBOARD NAVIGATION
+   ============================================================ */
+/* Sharp Red Box that works on any auto-generated ID or focused element */
 .keyboard-nav-active *:focus {
     outline: 4px solid #cc0000 !important;
     outline-offset: 4px;
-    background-color: rgba(204, 0, 0, 0.05) !important;
-    box-shadow: 0 0 10px rgba(204, 0, 0, 0.4);
+    background-color: rgba(204, 0, 0, 0.1) !important;
+    box-shadow: 0 0 15px rgba(204, 0, 0, 0.6);
     border-radius: 2px;
+}
+
+/* ============================================================
+   6. FONT SCALING
+   ============================================================ */
+body.font-size-adjusted p, 
+body.font-size-adjusted h1, 
+body.font-size-adjusted h2, 
+body.font-size-adjusted li, 
+body.font-size-adjusted a {
+    font-size: 1.25em !important;
+    line-height: 1.6 !important;
 }
