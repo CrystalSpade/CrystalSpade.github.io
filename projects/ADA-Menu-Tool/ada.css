@@ -175,14 +175,6 @@ body.vision-mode-enabled #widgetFunction h3 strong {
   color: #ffff00 !important; 
 } 
 
-/* Forces a high-contrast yellow background when hovering options in High Contrast Mode */ 
-body.vision-mode-enabled .ada-widget-list p:hover, 
-body.vision-mode-enabled .ada-widget-list p:hover strong { 
-  background-color: #ffff00 !important; 
-  color: #000000 !important; 
-  box-shadow: 0 0 10px #ffff00 !important; 
-} 
-
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
@@ -244,7 +236,7 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong {
   transform: scale(1) !important; 
 } 
 
-/* Handles standard Visual Focus background coloring (White block, black text) ONLY when High Contrast is off */ 
+/* Standard Mode: White highlight box with crisp black text */ 
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover, 
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong { 
   background-color: #ffffff !important; 
@@ -255,15 +247,22 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover stro
 /* Flips standard hovered text name to sharp black for maximum legibility */ 
 body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong { 
   color: #000000 !important; 
+} 
+
+/* HIGH CONTRAST MODE SPECIFIC FIX: Changes the hover block to solid black with yellow text */
+body.vision-mode-enabled .ada-widget-list p:hover,
+body.vision-mode-enabled .ada-widget-list p:hover strong,
+body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover,
+body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong {
+  background-color: #000000 !important; 
+  color: #ffff00 !important; 
+  box-shadow: 0 0 12px 2px #ffff00 !important; 
+  border: 1px solid #ffff00 !important;
 }
 
-/* HIGH CONTRAST SPECIFIC FIX: Prevents text from turning white over bright yellow highlights */
+/* Keeps the main title header anchored to bright yellow so it never washes out */
 body.visual-focus-active.vision-mode-enabled #widgetFunction h3 strong {
   color: #ffff00 !important;
-}
-
-body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong {
-  color: #000000 !important;
 }
 
 /* ============================================================ 
