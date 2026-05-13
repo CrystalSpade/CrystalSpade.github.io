@@ -175,6 +175,14 @@ body.vision-mode-enabled #widgetFunction h3 strong {
   color: #ffff00 !important; 
 } 
 
+/* FIXED: Blocks high-contrast background highlights from activating unless Visual Focus is active */ 
+body.vision-mode-enabled:not(.visual-focus-active) .ada-widget-list p:hover, 
+body.vision-mode-enabled:not(.visual-focus-active) .ada-widget-list p:hover strong { 
+  background-color: transparent !important;
+  color: #ffff00 !important;
+  box-shadow: none !important;
+} 
+
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
@@ -250,8 +258,6 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover stro
 } 
 
 /* HIGH CONTRAST MODE SPECIFIC FIX: Changes the hover block to solid black with yellow text */
-body.vision-mode-enabled .ada-widget-list p:hover,
-body.vision-mode-enabled .ada-widget-list p:hover strong,
 body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover,
 body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong {
   background-color: #000000 !important; 
