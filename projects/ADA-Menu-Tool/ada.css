@@ -56,47 +56,36 @@ body.dark-mode-enabled {
     color: #ffffff !important;
 }
 
-body.dark-mode-enabled #widgetFunction {
-    background-color: #1e1e1e;
-    color: white;
-    border-color: #444;
+/* Fix for Line 57 */
+body.dark-mode-enabled {
+    background-color: #121212 !important;
+    color: #ffffff !important;
 }
 
-/* 4. High Contrast Logic */
-body.vision-mode-enabled {
-    background-color: #000000 !important;
-    color: #ffff00 !important; /* Classic High Contrast Yellow */
-}
-
-body.vision-mode-enabled * {
-    border-color: #ffff00 !important;
-}
-
-/* Visual Focus Spotlight Effect */
-.visual-focus-active * {
-    transition: background-color 0.2s, color 0.2s;
-}
-
-/* This dims the background while keeping the text readable */
+/* Isolating the text blocks - added commas for your baby! */
 .visual-focus-active p:hover, 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
-.visual-focus-active li:hover {
-    background-color: rgba(0, 0, 0, 0.7) !important; /* Dark drop back */
-    color: #00ff00 !important; /* Neon highlight text */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+.visual-focus-active li:hover,
+.visual-focus-active a:hover,
+.visual-focus-active span:hover {
+    position: relative;
+    z-index: 10005;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    /* The deep isolated shadow */
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3), 0 0 0 9999px rgba(0, 0, 0, 0.7); 
+    border-radius: 8px;
+    padding: 10px;
+    transition: transform 0.2s ease;
+    transform: scale(1.02);
 }
 
-/* Keyboard Navigation Red Box */
-.keyboard-nav-active :focus {
-    outline: 3px solid #ff0000 !important; /* Red Box */
-    outline-offset: 2px;
-    box-shadow: 0 0 5px #ff0000;
-}
-
-/* 5. Visual Assist (Highlighting) */
-.highlighted {
-    outline: 4px solid #ffff00 !important;
-    background-color: rgba(255, 255, 0, 0.2) !important;
+/* Sharp Red Box for Keyboard Navigation */
+.keyboard-nav-active *:focus {
+    outline: 4px solid #cc0000 !important; /* Slightly deeper red for professional look */
+    outline-offset: 4px;
+    background-color: rgba(204, 0, 0, 0.05) !important;
+    box-shadow: 0 0 10px rgba(204, 0, 0, 0.4);
+    border-radius: 2px;
 }
