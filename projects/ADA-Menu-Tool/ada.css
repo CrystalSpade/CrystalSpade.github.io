@@ -177,7 +177,34 @@ body.vision-mode-enabled #widgetFunction strong {
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
-/* 4a. Global Spotlight Effect (For main website content) */ 
+
+/* 4a. Persistent Screen Dimming (Locks the dark curtain over the whole site instantly) */
+body.visual-focus-active::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.75) !important; /* The dimming layer */
+  z-index: 10000 !important;                        /* Sits right below your widget */
+  pointer-events: none !important;                  /* Allows you to click through it */
+}
+
+/* 4b. Persistent Widget Dimming (Dims the inside of the menu automatically) */
+.visual-focus-active #widgetFunction {
+  background-color: rgba(25, 25, 25, 0.9) !important; /* Dark menu backdrop */
+  border-color: #444 !important;
+}
+
+/* Forces all idle text inside the dimmed widget to turn white for clean contrast */
+.visual-focus-active #widgetFunction h3 strong,
+.visual-focus-active .ada-widget-list p strong {
+  color: #ffffff !important;
+  transition: all 0.2s ease !important;
+}
+
+/* 4c. Main Page Spotlight (Lifts hovered website content into a bright white focus block) */
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
 .visual-focus-active a:hover, 
@@ -189,49 +216,33 @@ body.vision-mode-enabled #widgetFunction strong {
   z-index: 10005 !important; 
   background-color: #ffffff !important; 
   color: #000000 !important; 
-  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5), 0 0 0 9999px rgba(0, 0, 0, 0.85) !important; 
+  box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.6) !important; 
   border-radius: 8px !important; 
   padding: 5px !important; 
   transform: scale(1.03) !important; 
   cursor: crosshair !important; 
 } 
 
-/* 4b. Widget Name Spotlight (Makes text names highlight perfectly like the switches) */ 
+/* 4d. Widget Option Spotlight (Lifts your menu options into a crisp highlight on hover) */ 
 .visual-focus-active .ada-widget-list p:hover,
 .visual-focus-active .ada-widget-list p strong:hover { 
   position: relative !important;
-  z-index: 10015 !important;        /* Pulls text up above background masks */
+  z-index: 10015 !important;        
   background-color: #ffffff !important; 
-  color: #000000 !important; 
   border-radius: 4px !important; 
   cursor: crosshair !important; 
   display: inline !important; 
   margin: 0 !important; 
   padding: 2px 6px !important; 
-  
-  /* Bright background glow so it mirrors the highlighted slider look */
-  box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.9) !important; 
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9) !important; 
   transform: scale(1) !important; 
-} 
+}
 
-/* Force any strong text inside the hovered paragraph to flip to black */
+/* Flips the active hovered text name to sharp black for maximum legibility */
 .visual-focus-active .ada-widget-list p:hover strong {
   color: #000000 !important;
 }
 
-/* 4c. Widget Dimming Layer (Dims the inside of the menu when Visual Focus is active) */
-.visual-focus-active #widgetFunction {
-  background-color: rgba(25, 25, 25, 0.85) !important; /* Dims the container background */
-  border-color: #444 !important;                        /* Darkens the widget border */
-}
-
-/* Switches all non-hovered text names inside the dimmed widget to white for contrast */
-.visual-focus-active .ada-widget-list p:not(:hover),
-.visual-focus-active .ada-widget-list p:not(:hover) strong,
-.visual-focus-active #widgetFunction h3:not(:hover) strong {
-  color: #ffffff !important;
-  transition: color 0.2s ease !important;
-}
 
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
