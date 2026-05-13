@@ -1,165 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ADA Accessibility Work | Gabrielle Johnson</title>
-  <style>
-    :root {
-      --bg: #f7f8fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #5f6b7a;
-      --accent: #3758f9;
-      --accent-dark: #243bb5;
-      --border: #dfe4ea;
-      --soft: #eef2ff;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADA Accessibility Demo</title>
+</head>
 
-    * {
-      box-sizing: border-box;
-    }
+<body>
+  <a href="#main-content">Skip to main content</a>
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-      background: var(--bg);
-      color: var(--text);
-    }
+  <header>
+    <h1>ADA Accessibility Demo Page</h1>
+    <p>
+      This sample page demonstrates basic accessible HTML structure, including headings,
+      links, forms, tables, images, and interactive content.
+    </p>
+  </header>
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#form">Form Example</a></li>
+      <li><a href="#table">Table Example</a></li>
+      <li><a href="#details">Details Example</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-    }
+  <main id="main-content">
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>
+        This page uses semantic HTML elements to help improve accessibility for users
+        who rely on screen readers, keyboard navigation, and clear page structure.
+      </p>
 
-    .skip-link {
-      position: absolute;
-      left: -999px;
-      top: 1rem;
-      background: var(--text);
-      color: #fff;
-      padding: 0.75rem 1rem;
-      z-index: 100;
-      border-radius: 0.5rem;
-    }
+      <h3>Accessibility Features Included</h3>
+      <ul>
+        <li>Skip link</li>
+        <li>Semantic landmarks</li>
+        <li>Proper heading structure</li>
+        <li>Descriptive links</li>
+        <li>Labeled form fields</li>
+        <li>Accessible table headers</li>
+        <li>Alternative text for images</li>
+      </ul>
+    </section>
 
-    .skip-link:focus {
-      left: 1rem;
-    }
+    <section id="form">
+      <h2>Accessible Form Example</h2>
 
-    header {
-      background: linear-gradient(135deg, #172033, #3758f9);
-      color: #fff;
-      padding: 4rem 1.5rem;
-    }
+      <form action="#" method="post">
+        <p>
+          <label for="name">Full Name:</label><br>
+          <input type="text" id="name" name="name" required>
+        </p>
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+        <p>
+          <label for="email">Email Address:</label><br>
+          <input type="email" id="email" name="email" required>
+        </p>
 
-    .hero {
-      max-width: 780px;
-    }
+        <p>
+          <label for="topic">Accessibility Topic:</label><br>
+          <select id="topic" name="topic">
+            <option value="keyboard">Keyboard Navigation</option>
+            <option value="forms">Accessible Forms</option>
+            <option value="contrast">Color Contrast</option>
+            <option value="screen-readers">Screen Reader Support</option>
+          </select>
+        </p>
 
-    .eyebrow {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
+        <p>
+          <label for="message">Message:</label><br>
+          <textarea id="message" name="message" rows="5"></textarea>
+        </p>
 
-    h1,
-    h2,
-    h3 {
-      line-height: 1.2;
-      margin-top: 0;
-    }
+        <button type="submit">Submit</button>
+      </form>
+    </section>
 
-    h1 {
-      font-size: clamp(2.25rem, 6vw, 4rem);
-      margin-bottom: 1rem;
-    }
+    <section id="table">
+      <h2>Accessible Table Example</h2>
 
-    h2 {
-      font-size: clamp(1.7rem, 3vw, 2.25rem);
-      margin-bottom: 1rem;
-    }
+      <table border="1">
+        <caption>Basic Accessibility Checklist</caption>
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">Purpose</th>
+            <th scope="col">Included</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alt Text</td>
+            <td>Describes images for screen reader users</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Labels</td>
+            <td>Connects form fields with instructions</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Headings</td>
+            <td>Creates clear page structure</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Skip Link</td>
+            <td>Lets users skip repeated navigation</td>
+            <td>Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-    h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
+    <section id="details">
+      <h2>Expandable Details Example</h2>
 
-    .hero p {
-      font-size: 1.15rem;
-      color: #eef2ff;
-      margin-bottom: 1.5rem;
-    }
+      <details>
+        <summary>What makes this page accessible?</summary>
+        <p>
+          This page uses semantic HTML, labeled form fields, structured headings,
+          descriptive links, and accessible tables.
+        </p>
+      </details>
 
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
+      <details>
+        <summary>Why does semantic HTML matter?</summary>
+        <p>
+          Semantic HTML helps assistive technologies understand the meaning and structure
+          of the page.
+        </p>
+      </details>
+    </section>
 
-    .button {
-      display: inline-block;
-      padding: 0.85rem 1rem;
-      border-radius: 0.75rem;
-      border: 2px solid transparent;
-      background: #fff;
-      color: #172033;
-      font-weight: 700;
-    }
+    <section>
+      <h2>Image Example</h2>
 
-    .button.secondary {
-      background: transparent;
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.7);
-    }
+      <figure>
+        <img src="sample-image.jpg" alt="Example placeholder image for accessibility testing" width="300">
+        <figcaption>
+          This image includes alternative text for users who cannot see it.
+        </figcaption>
+      </figure>
+    </section>
 
-    main {
-      padding: 3rem 1.5rem;
-    }
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        For more information, email
+        <a href="mailto:GMonet.Johnson@gmail.com">GMonet.Johnson@gmail.com</a>.
+      </p>
+    </section>
+  </main>
 
-    section {
-      margin-bottom: 3rem;
-    }
-
-    .section-intro {
-      max-width: 780px;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-
-    .grid.two {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.25rem;
-      box-shadow: 0 12px 30px rgba(15, 23, 42,
-</style>
+  <footer>
+    <p>&copy; 2026 Gabrielle Johnson. ADA Accessibility Demo Page.</p>
+  </footer>
 <script src="ada-init.js"></script>
 </body>
 </html>
