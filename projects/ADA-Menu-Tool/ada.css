@@ -76,7 +76,7 @@ body.vision-mode-enabled {
 }
 
 /* ============================================================
-   4. THE CROWN JEWEL (FLORENCE SPOTLIGHT)
+   4. Visual Assist Spotlight
    ============================================================ */
 /* This isolates the hovered element using a massive box-shadow trick */
 .visual-focus-active p:hover, 
