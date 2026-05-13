@@ -219,6 +219,20 @@ body.vision-mode-enabled #widgetFunction strong {
   color: #000000 !important;
 }
 
+/* 4c. Widget Dimming Layer (Dims the inside of the menu when Visual Focus is active) */
+.visual-focus-active #widgetFunction {
+  background-color: rgba(25, 25, 25, 0.85) !important; /* Dims the container background */
+  border-color: #444 !important;                        /* Darkens the widget border */
+}
+
+/* Switches all non-hovered text names inside the dimmed widget to white for contrast */
+.visual-focus-active .ada-widget-list p:not(:hover),
+.visual-focus-active .ada-widget-list p:not(:hover) strong,
+.visual-focus-active #widgetFunction h3:not(:hover) strong {
+  color: #ffffff !important;
+  transition: color 0.2s ease !important;
+}
+
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
    ============================================================ */ 
