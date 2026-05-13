@@ -1,5 +1,6 @@
 (function() {
     const initTooltips = () => {
+        // Mapping Labels/Switches to their respective Tooltip IDs
         const tips = [
             ["lblDarkMode", "tooltipDarkMode"],
             ["lblVisionImpaired", "tooltipVisionMode"],
@@ -8,33 +9,33 @@
             ["lblKeyboard", "tooltipKeyNav"]
         ];
 
-        tips.forEach(([labelId, tipId]) => {
-            const label = document.getElementById(labelId);
+        tips.forEach(([containerId, tipId]) => {
+            const container = document.getElementById(containerId);
             const tip = document.getElementById(tipId);
 
-            if (label && tip) {
-                // Ensure they don't have duplicate listeners
-                label.onmouseenter = () => { tip.hidden = false; };
-                label.onmouseleave = () => { tip.hidden = true; };
+            if (container && tip) {
+                // Show tooltip on hover
+                container.onmouseenter = () => { tip.hidden = false; };
+                container.onmouseleave = () => { tip.hidden = true; };
+                
+                // Also show when focusing via keyboard for true ADA compliance
+                container.onfocusin = () => { tip.hidden = false; };
+                container.onfocusout = () => { tip.hidden = true; };
             }
         });
     };
 
-    // This "Observer" waits for the widget to be injected into the DOM
+    // The "Watcher" waits for the loader to inject the menu
     const observer = new MutationObserver((mutations, obs) => {
         const widget = document.getElementById('widgetFunction');
         if (widget) {
             initTooltips();
-            // Optional: stop watching once found
-            // obs.disconnect(); 
+            obs.disconnect(); // Task complete, stop watching
         }
     });
 
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
-
-    // Also try running it immediately just in case
+    observer.observe(document.body, { childList: true, subtree: true });
+    
+    // Check once immediately
     initTooltips();
 })();
