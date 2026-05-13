@@ -1,15 +1,24 @@
 // Toggle Dark Mode
-const initDarkMode = () => {
-  const toggle = document.getElementById("dark_mode_switch");
-  if (!toggle) return;
+(function() {
+    const initDarkMode = () => {
+        const toggle = document.getElementById("dark_mode_switch");
+        if (!toggle) return;
 
-  toggle.addEventListener("change", () => {
-    document.body.classList.toggle("dark-mode-enabled", toggle.checked);
-  });
-};
+        // Use onchange so it only fires when someone actually clicks
+        toggle.onchange = () => {
+            document.body.classList.toggle("dark-mode-enabled", toggle.checked);
+        };
+    };
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initDarkMode);
-} else {
-  initDarkMode();
-}
+    // This "Observer" waits for the menu to be injected by your init script
+    const observer = new MutationObserver(() => {
+        if (document.getElementById("dark_mode_switch")) {
+            initDarkMode();
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Try once immediately just in case it's already there
+    initDarkMode();
+})();
