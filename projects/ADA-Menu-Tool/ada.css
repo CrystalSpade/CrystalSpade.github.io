@@ -58,6 +58,27 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
+/* Container settings */
+.ada-widget-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Row alignment settings */
+.ada-widget-list li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 8px !important;
+}
+
+/* Text inline settings */
+.ada-widget-list li p {
+  margin: 0 !important;
+  display: inline !important;
+}
+
 /* ============================================================
    3. DARK MODE & HIGH CONTRAST (VISION)
    ============================================================ */
