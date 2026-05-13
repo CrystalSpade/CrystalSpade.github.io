@@ -177,6 +177,8 @@ body.vision-mode-enabled #widgetFunction strong {
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
+
+/* 4a. Global Spotlight Effect (For the main website content) */
 .visual-focus-active p:not(.ada-widget-list p):hover, 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
@@ -194,6 +196,23 @@ body.vision-mode-enabled #widgetFunction strong {
   transform: scale(1.03); 
   cursor: crosshair; 
 } 
+
+/* 4b. SAFE Widget Spotlight Effect (Highlights text without breaking rows) */
+.visual-focus-active .ada-widget-list p:hover {
+  position: relative !important;
+  z-index: 10015 !important;                /* Keeps it above the shadow mask */
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 4px !important;
+  cursor: crosshair !important;
+  
+  /* CRITICAL FORCE-INLINE (Prevents the text from dropping below the switch) */
+  display: inline !important;
+  margin: 0 !important;
+  padding: 2px 4px !important;              /* Small padding that won't break layout */
+}
+
 
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
