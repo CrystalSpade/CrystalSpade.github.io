@@ -1,41 +1,43 @@
 (function() {
     const initTooltips = () => {
-        // Mapping Labels/Switches to their respective Tooltip IDs
-        const tips = [
+        // Pairing the Label ID with the Tooltip ID from your HTML
+        const pairings = [
             ["lblDarkMode", "tooltipDarkMode"],
             ["lblVisionImpaired", "tooltipVisionMode"],
             ["lblFontSize", "tooltipFontSize"],
-            ["lblFocus", "toolTipVisualFocus"],
+            ["lblFocus", "toolTipVisualFocus"], // Matches your uppercase 'T'
             ["lblKeyboard", "tooltipKeyNav"]
         ];
 
-        tips.forEach(([containerId, tipId]) => {
-            const container = document.getElementById(containerId);
+        pairings.forEach(([triggerId, tipId]) => {
+            const trigger = document.getElementById(triggerId);
             const tip = document.getElementById(tipId);
 
-            if (container && tip) {
-                // Show tooltip on hover
-                container.onmouseenter = () => { tip.hidden = false; };
-                container.onmouseleave = () => { tip.hidden = true; };
+            if (trigger && tip) {
+                // Show on Hover
+                trigger.addEventListener('mouseenter', () => tip.hidden = false);
+                trigger.addEventListener('mouseleave', () => tip.hidden = true);
                 
-                // Also show when focusing via keyboard for true ADA compliance
-                container.onfocusin = () => { tip.hidden = false; };
-                container.onfocusout = () => { tip.hidden = true; };
+                // Show on Keyboard Focus (for real ADA compliance)
+                const input = trigger.querySelector('input');
+                if (input) {
+                    input.addEventListener('focus', () => tip.hidden = false);
+                    input.addEventListener('blur', () => tip.hidden = true);
+                }
             }
         });
     };
 
-    // The "Watcher" waits for the loader to inject the menu
+    // The Observer waits for your widget HTML to be injected
     const observer = new MutationObserver((mutations, obs) => {
-        const widget = document.getElementById('widgetFunction');
-        if (widget) {
+        if (document.getElementById("widgetFunction")) {
             initTooltips();
-            obs.disconnect(); // Task complete, stop watching
+            obs.disconnect(); // Stop watching once found
         }
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
     
-    // Check once immediately
+    // Initial check in case it's already there
     initTooltips();
 })();
