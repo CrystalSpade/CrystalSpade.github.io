@@ -95,8 +95,8 @@ body {
   opacity: 0 !important; 
   width: 0 !important; 
   height: 0 !important; 
-  position: absolute !important; /* Prevents taking up alignment space */ 
-  z-index: -1 !important;        /* Pushes it behind the visual slider */ 
+  position: absolute !important; 
+  z-index: -1 !important;        
 } 
 
 /* The visible toggle slider track */ 
@@ -177,8 +177,7 @@ body.vision-mode-enabled #widgetFunction strong {
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
-
-/* 4a. Global Spotlight Effect (Only triggers on standard website pages) */ 
+/* 4a. Global Spotlight Effect (For main website content) */ 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
 .visual-focus-active a:hover, 
@@ -197,25 +196,28 @@ body.vision-mode-enabled #widgetFunction strong {
   cursor: crosshair !important; 
 } 
 
-/* 4b. SAFE Menu Spotlight Override (Highlights menu options with no screen blackouts) */ 
-.visual-focus-active .ada-widget-list p:hover { 
+/* 4b. Widget Name Spotlight (Makes text names highlight perfectly like the switches) */ 
+.visual-focus-active .ada-widget-list p:hover,
+.visual-focus-active .ada-widget-list p strong:hover { 
   position: relative !important;
-  z-index: 10015 !important;        /* Keeps the text lifted clearly on top */
+  z-index: 10015 !important;        /* Pulls text up above background masks */
   background-color: #ffffff !important; 
   color: #000000 !important; 
   border-radius: 4px !important; 
   cursor: crosshair !important; 
-  
-  /* CRITICAL FORCE-INLINE (Maintains row alignment beside the toggle switches) */ 
   display: inline !important; 
   margin: 0 !important; 
   padding: 2px 6px !important; 
   
-  /* Safe widget glow that does not create full-screen blackouts */
+  /* Bright background glow so it mirrors the highlighted slider look */
   box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.9) !important; 
   transform: scale(1) !important; 
-}
+} 
 
+/* Force any strong text inside the hovered paragraph to flip to black */
+.visual-focus-active .ada-widget-list p:hover strong {
+  color: #000000 !important;
+}
 
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
@@ -251,7 +253,7 @@ li:not(.ada-widget-list li) {
 [id^="tooltip"], 
 [id^="toolTip"] { 
   position: absolute; 
-  left: 110%; /* Pop out to the left/right of the switch */ 
+  left: 110%; 
   top: 50%; 
   transform: translateY(-50%); 
   background: #333; 
@@ -260,7 +262,7 @@ li:not(.ada-widget-list li) {
   border-radius: 4px; 
   font-size: 12px; 
   white-space: nowrap; 
-  z-index: 10015; /* Between Menu and Button */ 
+  z-index: 10015; 
   box-shadow: 0 2px 8px rgba(0,0,0,0.4); 
   pointer-events: none; 
 } 
