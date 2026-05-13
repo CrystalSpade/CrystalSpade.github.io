@@ -147,6 +147,7 @@ body {
 .slider.round:before { 
   border-radius: 50% !important; 
 } 
+
 /* ============================================================ 
    3. DARK MODE & HIGH CONTRAST (VISION) 
    ============================================================ */ 
@@ -169,17 +170,18 @@ body.vision-mode-enabled #widgetFunction {
 
 body.vision-mode-enabled #widgetFunction span, 
 body.vision-mode-enabled #widgetFunction label, 
-body.vision-mode-enabled #widgetFunction strong { 
+body.vision-mode-enabled #widgetFunction strong,
+body.vision-mode-enabled #widgetFunction h3 strong { 
   color: #ffff00 !important; 
 } 
 
-/* FIX: Forces a high-contrast yellow background when hovering options in High Contrast Mode */
-body.vision-mode-enabled .ada-widget-list p:hover,
-body.vision-mode-enabled .ada-widget-list p:hover strong {
-  background-color: #ffff00 !important;
-  color: #000000 !important;
-  box-shadow: 0 0 10px #ffff00 !important;
-}
+/* FIX: Forces a high-contrast yellow background when hovering options in High Contrast Mode */ 
+body.vision-mode-enabled .ada-widget-list p:hover, 
+body.vision-mode-enabled .ada-widget-list p:hover strong { 
+  background-color: #ffff00 !important; 
+  color: #000000 !important; 
+  box-shadow: 0 0 10px #ffff00 !important; 
+} 
 
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
@@ -197,15 +199,15 @@ body.visual-focus-active::before {
   pointer-events: none !important; 
 } 
 
-/* 4b. Persistent Widget Dimming */ 
-.visual-focus-active #widgetFunction { 
+/* 4b. Persistent Widget Dimming (Skips dimming background if High Contrast mode is already active) */ 
+body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction { 
   background-color: rgba(25, 25, 25, 0.9) !important; 
   border-color: #444 !important; 
 } 
 
-/* Forces all idle text inside the dimmed widget to turn white for clean contrast */ 
-.visual-focus-active #widgetFunction h3 strong, 
-.visual-focus-active .ada-widget-list p strong { 
+/* Forces all idle text inside the dimmed widget to turn white (Only if High Contrast mode is off) */ 
+body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction h3 strong, 
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong { 
   color: #ffffff !important; 
   transition: all 0.2s ease !important; 
 } 
@@ -229,7 +231,7 @@ body.visual-focus-active::before {
   cursor: crosshair !important; 
 } 
 
-/* 4d. Widget Option Spotlight (Modified to blend cleanly with High Contrast mode) */ 
+/* 4d. Widget Option Spotlight Framework */ 
 .visual-focus-active .ada-widget-list p:hover, 
 .visual-focus-active .ada-widget-list p strong:hover { 
   position: relative !important; 
@@ -242,13 +244,18 @@ body.visual-focus-active::before {
   transform: scale(1) !important; 
 } 
 
-/* Handles standard Visual Focus background coloring (White block, black text) */
-body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover,
-body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong {
+/* Handles standard Visual Focus background coloring (White block, black text) ONLY when High Contrast is off */ 
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover, 
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong { 
   background-color: #ffffff !important; 
   color: #000000 !important; 
   box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9) !important; 
-}
+} 
+
+/* Flips standard hovered text name to sharp black for maximum legibility */ 
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong { 
+  color: #000000 !important; 
+} 
 
 /* ============================================================ 
    5. KEYBOARD NAVIGATION 
@@ -305,4 +312,3 @@ body.vision-mode-enabled [id^="toolTip"] {
   border: 1px solid #000; 
   font-weight: bold; 
 }
-
