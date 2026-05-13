@@ -1,23 +1,26 @@
 // Font Size Increase
 (function() {
-    const initLargeFont = () => {
-        const toggle = document.getElementById("font_size_switch");
-        if (!toggle) return;
+  const SWITCH_ID = "font_size_switch";
+  const CLASS_NAME = "font-size-adjusted";
 
-        toggle.onchange = () => {
-            // This hooks directly into Section 6 of your CSS
-            document.body.classList.toggle("font-size-adjusted", toggle.checked);
-            console.log("Font Scaling:", toggle.checked ? "Enabled" : "Disabled");
-        };
-    };
+  const initLargeFont = () => {
+    const toggle = document.getElementById(SWITCH_ID);
+    if (!toggle) return false;
 
-    const observer = new MutationObserver((mutations, obs) => {
-        if (document.getElementById("font_size_switch")) {
-            initLargeFont();
-            obs.disconnect(); // Clean up the observer
-        }
+    toggle.addEventListener("change", () => {
+      document.body.classList.toggle(CLASS_NAME, toggle.checked);
     });
+    return true;
+  };
 
-    observer.observe(document.body, { childList: true, subtree: true });
-    initLargeFont();
+  document.addEventListener("adaStateChange", () => {
+    const toggle = document.getElementById(SWITCH_ID);
+    document.body.classList.toggle(CLASS_NAME, toggle ? toggle.checked : false);
+  });
+
+  if (initLargeFont()) return;
+  const observer = new MutationObserver((mutations, obs) => {
+    if (document.getElementById(SWITCH_ID)) { initLargeFont(); obs.disconnect(); }
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
