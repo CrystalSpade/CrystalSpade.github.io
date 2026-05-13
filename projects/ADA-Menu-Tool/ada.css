@@ -60,12 +60,14 @@ body {
   box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
 } 
 
-/* Your custom widget list container (keeps your original ul properties intact) */ 
+/* Container settings */ 
 .ada-widget-list { 
-  /* Leaves padding, margin, and list-style completely up to your existing ul rules */
+  list-style: none !important; 
+  padding: 0 !important; 
+  margin: 0 !important; 
 } 
 
-/* Row alignment settings - explicitly targets only widget rows */ 
+/* Row alignment settings */ 
 .ada-widget-list li { 
   display: flex !important; 
   align-items: center !important; 
@@ -73,33 +75,27 @@ body {
   margin-bottom: 8px !important; 
 } 
 
-/* Text inline settings - stops text from jumping to the next line */ 
+/* Text inline settings */ 
 .ada-widget-list li p { 
   margin: 0 !important; 
   display: inline !important; 
 } 
 
-/* ============================================================
-   2b. TOGGLE SWITCH STYLING
-   ============================================================ */
-
-/* The switch container box */
+/* --- TOGGLE SLIDE SWITCHES --- */
 .switch {
   position: relative;
   display: inline-block;
-  width: 50px;           /* Width of the toggle track */
-  height: 26px;          /* Height of the toggle track */
-  flex-shrink: 0;        /* Prevents the switch from shrinking */
+  width: 50px;           
+  height: 26px;          
+  flex-shrink: 0;        
 }
 
-/* Hide the default HTML checkbox box entirely */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The visible toggle slider track */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -107,11 +103,10 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;                 /* Default gray color when turned off */
-  transition: background-color 0.3s ease; /* Smooth color fade */
+  background-color: #ccc;                 
+  transition: background-color 0.3s ease; 
 }
 
-/* The actual white circular handle inside the slider */
 .slider:before {
   position: absolute;
   content: "";
@@ -120,26 +115,22 @@ body {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: transform 0.3s ease;       /* Smooth sliding animation */
+  transition: transform 0.3s ease;       
 }
 
-/* Background color changes when the checkbox is checked */
 .switch input:checked + .slider {
-  background-color: var(--button-bg-color); /* Uses your primary blue variable */
+  background-color: var(--button-bg-color); 
 }
 
-/* Move the white circular handle to the right when checked */
 .switch input:checked + .slider:before {
   transform: translateX(24px);
 }
 
-/* Keyboard focus styling for accessibility */
 .switch input:focus-visible + .slider {
   outline: 2px solid var(--text-color);
   outline-offset: 2px;
 }
 
-/* Make the switch corners completely round */
 .slider.round {
   border-radius: 34px;
 }
@@ -147,7 +138,6 @@ body {
 .slider.round:before {
   border-radius: 50%;
 }
-
 
 /* ============================================================ 
    3. DARK MODE & HIGH CONTRAST (VISION) 
@@ -178,7 +168,6 @@ body.vision-mode-enabled #widgetFunction strong {
 /* ============================================================ 
    4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
    ============================================================ */ 
-/* FIXED: Excluded .ada-widget-list items from being distorted by the spotlight effect */
 .visual-focus-active p:not(.ada-widget-list p):hover, 
 .visual-focus-active h1:hover, 
 .visual-focus-active h2:hover, 
@@ -223,7 +212,6 @@ body.font-size-adjusted strong {
 /* ============================================================ 
    7. TOOLTIP STYLING 
    ============================================================ */ 
-/* FIXED: Added a negative target to prevent global li positioning from breaking widget rows */
 li:not(.ada-widget-list li) { 
   position: relative; 
 } 
@@ -253,3 +241,4 @@ body.vision-mode-enabled [id^="toolTip"] {
   border: 1px solid #000; 
   font-weight: bold; 
 }
+
