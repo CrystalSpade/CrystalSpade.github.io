@@ -1,26 +1,28 @@
 // Toggle Color Impaired (High Contrast Mode with State Broadcast)
 (function() {
-  const initHighContrast = () => {
-    const toggle = document.getElementById("vision_mode_switch");
-    if (!toggle) return;
+  const SWITCH_ID = "vision_mode_switch";
+  const CLASS_NAME = "vision-mode-enabled";
 
-    toggle.onchange = () => {
-      const isChecked = toggle.checked;
-      document.body.classList.toggle("vision-mode-enabled", isChecked);
-      console.log("High Contrast:", isChecked ? "Activated" : "Deactivated");
-      
-      // BROADCAST STATE CHANGE: Tells visualAssist.js to refresh its styles
+  const initHighContrast = () => {
+    const toggle = document.getElementById(SWITCH_ID);
+    if (!toggle) return false;
+
+    toggle.addEventListener("change", () => {
+      document.body.classList.toggle(CLASS_NAME, toggle.checked);
       document.dispatchEvent(new CustomEvent("adaStateChange"));
-    };
+    });
+    return true;
   };
 
-  const observer = new MutationObserver((mutations, obs) => {
-    if (document.getElementById("vision_mode_switch")) {
-      initHighContrast();
-      obs.disconnect(); // Clear observer thread
-    }
+  document.addEventListener("adaStateChange", () => {
+    const toggle = document.getElementById(SWITCH_ID);
+    document.body.classList.toggle(CLASS_NAME, toggle ? toggle.checked : false);
   });
 
-  observer.observe(document.body, { childList: true, subtree: true });
-  initHighContrast();
+  if (initHighContrast()) return;
+  const observer = new MutationObserver((mutations, obs) => {
+    if (document.getElementById(SWITCH_ID)) { initHighContrast(); obs.disconnect(); }
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
+
