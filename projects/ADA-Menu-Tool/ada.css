@@ -249,9 +249,7 @@ body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover stro
   color: #000000 !important; 
 } 
 
-/* HIGH CONTRAST FOCUS MODE MERGE: Erases duplicate white shapes to build a clean solid black target row */ 
-body.vision-mode-enabled .ada-widget-list p:hover, 
-body.vision-mode-enabled .ada-widget-list p:hover strong, 
+/* HIGH CONTRAST FOCUS MODE MERGE: FIXED to ensure it only activates when BOTH switches are on */ 
 body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover, 
 body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong { 
   background-color: #000000 !important; 
