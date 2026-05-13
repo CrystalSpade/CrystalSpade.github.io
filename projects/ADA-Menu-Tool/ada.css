@@ -79,6 +79,76 @@ body {
   display: inline !important; 
 } 
 
+/* ============================================================
+   2b. TOGGLE SWITCH STYLING
+   ============================================================ */
+
+/* The switch container box */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;           /* Width of the toggle track */
+  height: 26px;          /* Height of the toggle track */
+  flex-shrink: 0;        /* Prevents the switch from shrinking */
+}
+
+/* Hide the default HTML checkbox box entirely */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The visible toggle slider track */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;                 /* Default gray color when turned off */
+  transition: background-color 0.3s ease; /* Smooth color fade */
+}
+
+/* The actual white circular handle inside the slider */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: transform 0.3s ease;       /* Smooth sliding animation */
+}
+
+/* Background color changes when the checkbox is checked */
+.switch input:checked + .slider {
+  background-color: var(--button-bg-color); /* Uses your primary blue variable */
+}
+
+/* Move the white circular handle to the right when checked */
+.switch input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Keyboard focus styling for accessibility */
+.switch input:focus-visible + .slider {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+/* Make the switch corners completely round */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
 /* ============================================================ 
    3. DARK MODE & HIGH CONTRAST (VISION) 
    ============================================================ */ 
