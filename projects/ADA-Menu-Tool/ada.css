@@ -139,3 +139,27 @@ body.font-size-adjusted span {
     font-size: 1.25em !important;
     line-height: 1.6 !important;
 }
+
+/* ============================================================
+   7. TOOLTIP STYLING
+   ============================================================ */
+[id^="tooltip"] {
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10015; /* Higher than the menu */
+    margin-top: -30px; /* Position it above the text */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    pointer-events: none; /* Don't let the tooltip block the mouse */
+}
+
+/* Ensure tooltips are readable in High Contrast */
+body.vision-mode-enabled [id^="tooltip"] {
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border: 1px solid #000;
+}
