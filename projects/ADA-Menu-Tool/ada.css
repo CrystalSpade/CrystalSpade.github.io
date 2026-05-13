@@ -1,320 +1,312 @@
-/* ============================================================ 
-   1. CORE VARIABLES & BASE STYLES 
-   ============================================================ */ 
-:root { 
-  --text-color: #000000; 
-  --bg-color: #ffffff; 
-  --button-bg-color: #4176b3; 
-  --button-hover-bg-color: #335d8e; 
-  --div-bg-color: #ffffff; 
-  --h1-color: #000000; 
-  --container-bg-color: #f9f9f9; 
-  --links-color: #466991; 
-  --section-bg-color: #ffffff; 
-} 
-
-body { 
-  transition: background-color 0.3s ease, color 0.3s ease; 
-  color: var(--text-color); 
-  background-color: var(--bg-color); 
-  margin: 0; 
-  padding: 0; 
-} 
-
-/* ============================================================ 
-   2. WIDGET UI (THE MENU & BUTTON) 
-   ============================================================ */ 
-.button2 { 
-  position: fixed; 
-  top: 20px; 
-  right: 20px; 
-  width: 60px; 
-  height: 60px; 
-  border-radius: 50%; 
-  background-color: var(--button-bg-color); 
-  z-index: 10020; /* Top Layer */ 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  border: none; 
-  cursor: pointer; 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
-  transition: transform 0.2s ease; 
-} 
-
-.button2:hover { 
-  transform: scale(1.1); 
-} 
-
-#widgetFunction { 
-  position: fixed; 
-  top: 85px; 
-  right: 25px; 
-  width: 340px; 
-  background-color: var(--container-bg-color); 
-  color: var(--text-color); 
-  border: 2px solid #ccc; 
-  border-radius: 10px; 
-  padding: 20px; 
-  z-index: 10010 !important; /* Above Spotlight shadow */ 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-} 
-
-/* Container settings */ 
-.ada-widget-list { 
-  list-style: none !important; 
-  padding: 0 !important; 
-  margin: 0 !important; 
-} 
-
-/* Row alignment settings */ 
-.ada-widget-list li { 
-  display: flex !important; 
-  align-items: center !important; 
-  gap: 10px !important; 
-  margin-bottom: 8px !important; 
-} 
-
-/* Text inline settings */ 
-.ada-widget-list li p { 
-  margin: 0 !important; 
-  display: inline !important; 
-} 
-
-/* --- TOGGLE SLIDE SWITCHES --- */ 
-.switch { 
-  position: relative !important; 
-  display: inline-block !important; 
-  width: 50px !important; 
-  height: 26px !important; 
-  flex-shrink: 0 !important; 
-} 
-
-/* HIDES THE DEFAULT CHECKBOX (Overriding theme defaults) */ 
-.switch input { 
-  opacity: 0 !important; 
-  width: 0 !important; 
-  height: 0 !important; 
-  position: absolute !important; 
-  z-index: -1 !important; 
-} 
-
-/* The visible toggle slider track */ 
-.slider { 
-  position: absolute !important; 
-  cursor: pointer !important; 
-  top: 0 !important; 
-  left: 0 !important; 
-  right: 0 !important; 
-  bottom: 0 !important; 
-  background-color: #ccc !important; 
-  transition: background-color 0.3s ease !important; 
-} 
-
-/* The actual white circular handle inside the slider */ 
-.slider:before { 
-  position: absolute !important; 
-  content: "" !important; 
-  height: 18px !important; 
-  width: 18px !important; 
-  left: 4px !important; 
-  bottom: 4px !important; 
-  background-color: white !important; 
-  transition: transform 0.3s ease !important; 
-} 
-
-/* Background color changes when the checkbox is checked */ 
-.switch input:checked + .slider { 
-  background-color: var(--button-bg-color) !important; 
-} 
-
-/* Move the white circular handle to the right when checked */ 
-.switch input:checked + .slider:before { 
-  transform: translateX(24px) !important; 
-} 
-
-/* Keyboard focus styling for accessibility */ 
-.switch input:focus-visible + .slider { 
-  outline: 2px solid var(--text-color) !important; 
-  outline-offset: 2px !important; 
-} 
-
-/* Make the switch corners completely round */ 
-.slider.round { 
-  border-radius: 34px !important; 
-} 
-
-.slider.round:before { 
-  border-radius: 50% !important; 
-} 
-
-/* ============================================================ 
-   3. DARK MODE & HIGH CONTRAST (VISION) 
-   ============================================================ */ 
-body.dark-mode-enabled { 
-  --bg-color: #121212 !important; 
-  --text-color: #ffffff !important; 
-  --container-bg-color: #1e1e1e !important; 
-} 
-
-body.vision-mode-enabled { 
-  --bg-color: #000000 !important; 
-  --text-color: #ffff00 !important; 
-} 
-
-body.vision-mode-enabled #widgetFunction { 
-  background-color: #000000 !important; 
-  border: 3px solid #ffff00 !important; 
-  color: #ffff00 !important; 
-} 
-
-body.vision-mode-enabled #widgetFunction span, 
-body.vision-mode-enabled #widgetFunction label, 
-body.vision-mode-enabled #widgetFunction strong, 
-body.vision-mode-enabled #widgetFunction h3 strong { 
-  color: #ffff00 !important; 
-} 
-
-/* ============================================================ 
-   4. VISUAL ASSIST SPOTLIGHT (CROWN JEWEL) 
-   ============================================================ */ 
-/* 4a. Persistent Screen Dimming */ 
-body.visual-focus-active::before { 
-  content: "" !important; 
-  position: fixed !important; 
-  top: 0 !important; 
-  left: 0 !important; 
-  width: 100vw !important; 
-  height: 100vh !important; 
-  background-color: rgba(0, 0, 0, 0.75) !important; 
-  z-index: 10000 !important; 
-  pointer-events: none !important; 
-} 
-
-/* 4b. Persistent Widget Dimming (Skips background tint when High Contrast mode is active) */ 
-body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction { 
-  background-color: rgba(25, 25, 25, 0.9) !important; 
-  border-color: #444 !important; 
-} 
-
-/* Forces all text labels inside the dimmed widget to turn white (Only if High Contrast is off) */ 
-body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction h3 strong, 
-body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong { 
-  color: #ffffff !important; 
-  transition: all 0.2s ease !important; 
-} 
-
-/* 4c. Main Page Spotlight Tracking Layout */ 
-.visual-focus-active h1:hover, 
-.visual-focus-active h2:hover, 
-.visual-focus-active a:hover, 
-.visual-focus-active span:not(#widgetFunction span):hover, 
-.visual-focus-active img:hover, 
-.visual-focus-active li:not(.ada-widget-list li):hover, 
-.visual-focus-active p:not(.ada-widget-list p):hover { 
-  position: relative !important; 
-  z-index: 10005 !important; 
-  background-color: #ffffff !important; 
-  color: #000000 !important; 
-  box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.6) !important; 
-  border-radius: 8px !important; 
-  padding: 5px !important; 
-  transform: scale(1.03) !important; 
-  cursor: crosshair !important; 
-} 
-
-/* 4d. Cleaned Widget Option Spotlight Container Framework */ 
-.visual-focus-active .ada-widget-list p:hover, 
-.visual-focus-active .ada-widget-list p strong:hover { 
-  position: relative !important; 
-  z-index: 10015 !important; 
-  border-radius: 4px !important; 
-  cursor: crosshair !important; 
-  display: inline !important; 
-  margin: 0 !important; 
-  padding: 2px 6px !important; 
-  transform: scale(1) !important; 
-} 
-
-/* Standard Focus Mode Override: Renders a single white block with crisp black text */ 
-body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover, 
-body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong { 
-  background-color: #ffffff !important; 
-  color: #000000 !important; 
-  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9) !important; 
-} 
-
-/* Flips standard hovered text name to sharp black for maximum legibility */ 
-body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong { 
-  color: #000000 !important; 
-} 
-
-/* HIGH CONTRAST FOCUS MODE MERGE: FIXED to ensure it only activates when BOTH switches are on */ 
-body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover, 
-body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong { 
-  background-color: #000000 !important; 
-  color: #ffff00 !important; 
-  box-shadow: 0 0 12px 2px #ffff00 !important; 
-  border: 1px solid #ffff00 !important; 
-} 
-
-/* Keeps the main title header anchored to bright yellow so it never washes out */ 
-body.visual-focus-active.vision-mode-enabled #widgetFunction h3 strong { 
-  color: #ffff00 !important; 
-} 
-
-/* ============================================================ 
-   5. KEYBOARD NAVIGATION 
-   ============================================================ */ 
-.keyboard-nav-active *:focus { 
-  outline: 4px solid #cc0000 !important; 
-  outline-offset: 4px; 
-  box-shadow: 0 0 15px rgba(204, 0, 0, 0.6); 
-} 
-
-/* ============================================================ 
-   6. FONT SCALING 
-   ============================================================ */ 
-body.font-size-adjusted p, 
-body.font-size-adjusted h1, 
-body.font-size-adjusted h2, 
-body.font-size-adjusted li, 
-body.font-size-adjusted a, 
-body.font-size-adjusted span, 
-body.font-size-adjusted strong { 
-  font-size: 1.25em !important; 
-  line-height: 1.6 !important; 
-} 
-
-/* ============================================================ 
-   7. TOOLTIP STYLING 
-   ============================================================ */ 
-li:not(.ada-widget-list li) { 
-  position: relative; 
-} 
-
-/* Anchor for tooltips */ 
-[id^="tooltip"], 
-[id^="toolTip"] { 
-  position: absolute; 
-  left: 110%; 
-  top: 50%; 
-  transform: translateY(-50%); 
-  background: #333; 
-  color: #fff; 
-  padding: 6px 12px; 
-  border-radius: 4px; 
-  font-size: 12px; 
-  white-space: nowrap; 
-  z-index: 10015; 
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4); 
-  pointer-events: none; 
-} 
-
-body.vision-mode-enabled [id^="tooltip"], 
-body.vision-mode-enabled [id^="toolTip"] { 
-  background: #ffff00 !important; 
-  color: #000000 !important; 
-  border: 1px solid #000; 
-  font-weight: bold; 
+/* ============================================================
+   1. CORE VARIABLES & BASE STYLES
+   ============================================================ */
+:root {
+  --text-color: #000000;
+  --bg-color: #ffffff;
+  --button-bg-color: #4176b3;
+  --button-hover-bg-color: #335d8e;
+  --div-bg-color: #ffffff;
+  --h1-color: #000000;
+  --container-bg-color: #f9f9f9;
+  --links-color: #466991;
+  --section-bg-color: #ffffff;
 }
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   2. WIDGET UI (THE MENU & BUTTON)
+   ============================================================ */
+.button2 {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--button-bg-color);
+  z-index: 10020; /* Safely above dimming layers */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+.button2:hover {
+  transform: scale(1.1);
+}
+
+#widgetFunction {
+  position: fixed;
+  top: 85px;
+  right: 25px;
+  width: 340px;
+  background-color: var(--container-bg-color);
+  color: var(--text-color);
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 10010 !important; /* Above spotlight mask layer */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.ada-widget-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.ada-widget-list li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 8px !important;
+  position: relative !important;
+  z-index: 10011 !important; /* Forces items above background dim layer */
+}
+
+.ada-widget-list li p {
+  margin: 0 !important;
+}
+
+/* --- TOGGLE SLIDE SWITCHES --- */
+.switch {
+  position: relative !important;
+  display: inline-block !important;
+  width: 50px !important;
+  height: 26px !important;
+  flex-shrink: 0 !important;
+}
+
+/* FIX: Input fills container entirely so mouse hover/clicks register properly */
+.switch input {
+  opacity: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  z-index: 2 !important; /* Floats over slider track */
+}
+
+.slider {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: #ccc !important;
+  transition: background-color 0.3s ease !important;
+  z-index: 1 !important;
+}
+
+.slider:before {
+  position: absolute !important;
+  content: "" !important;
+  height: 18px !important;
+  width: 18px !important;
+  left: 4px !important;
+  bottom: 4px !important;
+  background-color: white !important;
+  transition: transform 0.3s ease !important;
+  z-index: 1 !important;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--button-bg-color) !important;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(24px) !important;
+}
+
+.switch input:focus-visible + .slider {
+  outline: 2px solid var(--text-color) !important;
+  outline-offset: 2px !important;
+}
+
+.slider.round {
+  border-radius: 34px !important;
+}
+
+.slider.round:before {
+  border-radius: 50% !important;
+}
+
+/* ============================================================
+   3. DARK MODE & HIGH CONTRAST (VISION)
+   ============================================================ */
+body.dark-mode-enabled {
+  --bg-color: #121212 !important;
+  --text-color: #ffffff !important;
+  --container-bg-color: #1e1e1e !important;
+}
+
+body.vision-mode-enabled {
+  --bg-color: #000000 !important;
+  --text-color: #ffff00 !important;
+}
+
+body.vision-mode-enabled #widgetFunction {
+  background-color: #000000 !important;
+  border: 3px solid #ffff00 !important;
+  color: #ffff00 !important;
+}
+
+body.vision-mode-enabled #widgetFunction span,
+body.vision-mode-enabled #widgetFunction label,
+body.vision-mode-enabled #widgetFunction strong,
+body.vision-mode-enabled #widgetFunction h3 strong {
+  color: #ffff00 !important;
+}
+
+/* ============================================================
+   4. VISUAL ASSIST SPOTLIGHT
+   ============================================================ */
+/* 4a. Screen Dimming Overlay */
+body.visual-focus-active::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  z-index: 10000 !important; /* Below the widget menu framework */
+  pointer-events: none !important;
+}
+
+/* 4b. Persistent Widget Dimming Rules */
+body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction {
+  background-color: rgba(25, 25, 25, 0.9) !important;
+  border-color: #444 !important;
+}
+
+body.visual-focus-active:not(.vision-mode-enabled) #widgetFunction h3 strong,
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p strong {
+  color: #ffffff !important;
+  transition: all 0.2s ease !important;
+}
+
+/* 4c. Main Page Spotlight Tracking Layout */
+.visual-focus-active h1:hover,
+.visual-focus-active h2:hover,
+.visual-focus-active a:hover,
+.visual-focus-active span:not(#widgetFunction span):hover,
+.visual-focus-active img:hover,
+.visual-focus-active li:not(.ada-widget-list li):hover,
+.visual-focus-active p:not(.ada-widget-list p):hover {
+  position: relative !important;
+  z-index: 10005 !important; /* Floats perfectly above dim layer */
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.6) !important;
+  border-radius: 8px !important;
+  padding: 5px !important;
+  transform: scale(1.03) !important;
+  cursor: crosshair !important;
+}
+
+/* 4d. Cleaned Widget Option Spotlight Container Framework */
+.visual-focus-active .ada-widget-list p:hover,
+.visual-focus-active .ada-widget-list p strong:hover {
+  position: relative !important;
+  z-index: 10015 !important;
+  border-radius: 4px !important;
+  cursor: crosshair !important;
+  /* FIX: inline-block prevents content boxes from collapsing on mouse roll-over */
+  display: inline-block !important; 
+  margin: 0 !important;
+  padding: 2px 6px !important;
+  transform: scale(1) !important;
+}
+
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover,
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9) !important;
+}
+
+body.visual-focus-active:not(.vision-mode-enabled) .ada-widget-list p:hover strong {
+  color: #000000 !important;
+}
+
+body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover,
+body.visual-focus-active.vision-mode-enabled .ada-widget-list p:hover strong {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  box-shadow: 0 0 12px 2px #ffff00 !important;
+  border: 1px solid #ffff00 !important;
+}
+
+body.visual-focus-active.vision-mode-enabled #widgetFunction h3 strong {
+  color: #ffff00 !important;
+}
+
+/* ============================================================
+   5. KEYBOARD NAVIGATION
+   ============================================================ */
+.keyboard-nav-active *:focus {
+  outline: 4px solid #cc0000 !important;
+  outline-offset: 4px;
+  box-shadow: 0 0 15px rgba(204, 0, 0, 0.6);
+}
+
+/* ============================================================
+   6. FONT SCALING
+   ============================================================ */
+body.font-size-adjusted p,
+body.font-size-adjusted h1,
+body.font-size-adjusted h2,
+body.font-size-adjusted li,
+body.font-size-adjusted a,
+body.font-size-adjusted span,
+body.font-size-adjusted strong {
+  font-size: 1.25em !important;
+  line-height: 1.6 !important;
+}
+
+/* ============================================================
+   7. TOOLTIP STYLING
+   ============================================================ */
+li:not(.ada-widget-list li) {
+  position: relative;
+}
+
+[id^="tooltip"], [id^="toolTip"] {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10015;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+
+body.vision-mode-enabled [id^="tooltip"],
+body.vision-mode-enabled [id^="toolTip"] {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 1px solid #000;
+  font-weight: bold;
+}
+
