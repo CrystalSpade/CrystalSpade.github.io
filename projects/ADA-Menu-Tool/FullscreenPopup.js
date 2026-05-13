@@ -1,25 +1,21 @@
 // Popup dialog box
-// Popup dialog box toggle
-let isOpen = 0; 
-
+// Function to toggle the ADA widget visibility
 function togglePopup() {
-    // We change "myPopup" to "widgetFunction" to match your widget HTML
-    const popup = document.getElementById("widgetFunction"); 
-    
-    if (!popup) return; 
+  const popup = document.getElementById("widgetFunction");
+  if (!popup) return;
 
-    if (isOpen === 0) {
-        popup.style.display = "block"; // Changed from flex to block for better compatibility
-        isOpen = 1;
-    } else {
-        popup.style.display = "none";
-        isOpen = 0;
-    }
+  // Checks the actual current style to determine whether to hide or show
+  if (popup.style.display === "none" || popup.style.display === "") {
+    popup.style.display = "block";
+  } else {
+    popup.style.display = "none";
+  }
 }
 
-// Attach the function to your button automatically
+// Attach event listener safely using the closest() method
 document.addEventListener('click', function(e) {
-    if (e.target && e.target.id === 'openButton') {
-        togglePopup();
-    }
+  // .closest('#openButton') ensures clicking the ♿ emoji still triggers the button
+  if (e.target && e.target.closest('#openButton')) {
+    togglePopup();
+  }
 });
