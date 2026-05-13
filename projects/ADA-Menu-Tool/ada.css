@@ -274,7 +274,7 @@ body.font-size-adjusted strong {
 }
 
 /* ============================================================
-   7. TOOLTIP STYLING (SNAPPED UNDER MODE)
+   7. TOOLTIP STYLING (HIGH LEGIBILITY SNAPPED UNDER MODE)
    ============================================================ */
 li:not(.ada-widget-list li) {
   position: relative;
@@ -282,23 +282,34 @@ li:not(.ada-widget-list li) {
 
 /* Base tooltip container setup */
 [id^="tooltip"], [id^="toolTip"] {
-  position: fixed !important; /* Locks layout tracking parameters directly to viewport coordinates */
-  background: #333;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 12px;
+  position: fixed !important; /* Locks tracking parameters directly to viewport coordinates */
+  
+  /* CRITICAL CONTRAST FIXES: Pitch black background for zero transparency bleed-through */
+  background: #000000 !important; 
+  color: #ffffff !important;
+  
+  /* BOX DIMENSIONS FIXES: Added massive padding cushions to isolate text blocks */
+  padding: 10px 18px !important; 
+  border-radius: 6px;
+  
+  /* FONT SCALE FIXES: Increased size, bold weight, and letter tracking for readability */
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
   white-space: nowrap;
-  z-index: 10055 !important; /* Floats safely on top of your widget boundaries */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-  pointer-events: none; /* Prevents element frame from intercepting input actions */
+  
+  /* SHADOW & LAYERING FIXES: Deep shadow mask to separate tooltip from underlying text content */
+  z-index: 10055 !important; 
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  pointer-events: none; 
 }
 
-/* High Contrast Override theme profiles */
+/* High Contrast Override theme profiles (Forces bright neon yellow text blocks) */
 body.vision-mode-enabled [id^="tooltip"], 
 body.vision-mode-enabled [id^="toolTip"] {
-  background: #ffff00 !important;
-  color: #000000 !important;
-  border: 2px solid #000000 !important;
-  font-weight: bold;
+  background: #000000 !important;
+  color: #ffff00 !important;
+  border: 3px solid #ffff00 !important;
+  font-size: 17px !important; /* Extra sizing push for vision impaired tracking states */
 }
+
