@@ -274,51 +274,42 @@ body.font-size-adjusted strong {
 }
 
 /* ============================================================
-   7. TOOLTIP STYLING (THE COMPLETE OVERLAY & MENACE FIX)
+   7. TOOLTIP STYLING (THE STABLE GHOST FIX)
    ============================================================ */
 
-/* Ensure the list items in your widget act as the anchor point */
+/* Anchor the tooltips to the list items */
 .ada-widget-list li {
   position: relative !important;
 }
 
-/* Base tooltip container setup */
 [id^="tooltip"], [id^="toolTip"] {
-  /* Absolute positioning docks it to the specific list item (li) */
   position: absolute !important; 
-  
-  /* POSITIONING: Pushes it to the left of the menu so it doesn't cover toggles */
   top: 50%;
-  right: 110%; 
+  right: 115%; /* Pushes them to the left side of the widget */
   transform: translateY(-50%);
   
-  /* VISIBILITY & CONTRAST: Solid black background ensures no text bleeds through */
   background: #000000 !important; 
   color: #ffffff !important;
-  display: block; 
-  
-  /* BOX DIMENSIONS */
   padding: 10px 16px !important; 
   border-radius: 6px;
-  
-  /* FONT SCALING: Bold and clear for ADA compliance */
   font-size: 14px !important;
   font-weight: 700 !important;
-  letter-spacing: 0.5px !important;
   white-space: nowrap;
   
-  /* THE STACKING FIX: 
-     Higher than the widget (10010), forcing it to stay on top.
-  */
-  z-index: 10200 !important; 
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2);
-  
-  /* THE "MENACE" FIX: 
-     Makes the tooltip a 'ghost' so the mouse doesn't trigger 
-     a 'mouseleave' event when you hover over it.
-  */
+  /* Layering: Stays on top of everything */
+  z-index: 10500 !important; 
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+
+  /* THE FIX: Invisible by default, and a "ghost" so it doesn't flicker */
+  opacity: 0;
   pointer-events: none !important; 
-  user-select: none !important;
+  transition: opacity 0.15s ease;
+  display: block !important; 
+}
+
+/* This class is what the JavaScript will toggle */
+.tooltip-active {
+  opacity: 1 !important;
 }
 
 /* High Contrast / Vision Mode Overrides */
@@ -327,5 +318,4 @@ body.vision-mode-enabled [id^="toolTip"] {
   background: #000000 !important;
   color: #ffff00 !important;
   border: 3px solid #ffff00 !important;
-  font-size: 16px !important; 
 }
