@@ -1,11 +1,14 @@
+// Tooltips
+
 (function() {
     const initTooltips = () => {
-        // Pairing the Label ID with the Tooltip ID from your HTML
+        // Updated pairings to match common patterns in your widget
+        // Double-check these IDs in your HTML!
         const pairings = [
             ["lblDarkMode", "tooltipDarkMode"],
             ["lblVisionImpaired", "tooltipVisionMode"],
             ["lblFontSize", "tooltipFontSize"],
-            ["lblFocus", "toolTipVisualFocus"], // Matches your uppercase 'T'
+            ["lblFocus", "toolTipVisualFocus"], 
             ["lblKeyboard", "tooltipKeyNav"]
         ];
 
@@ -14,30 +17,49 @@
             const tip = document.getElementById(tipId);
 
             if (trigger && tip) {
-                // Show on Hover
-                trigger.addEventListener('mouseenter', () => tip.hidden = false);
-                trigger.addEventListener('mouseleave', () => tip.hidden = true);
+                // Force tooltip to be hidden initially via JS to ensure state sync
+                tip.hidden = true;
+
+                // SHOW logic
+                const showTip = () => {
+                    tip.hidden = false;
+                    tip.style.display = 'block'; // Ensures CSS doesn't block it
+                };
+
+                // HIDE logic
+                const hideTip = () => {
+                    tip.hidden = true;
+                };
+
+                // Hover Events
+                trigger.addEventListener('mouseenter', showTip);
+                trigger.addEventListener('mouseleave', hideTip);
                 
-                // Show on Keyboard Focus (for real ADA compliance)
+                // Keyboard focus for ADA (targets the checkbox/toggle inside the label)
                 const input = trigger.querySelector('input');
                 if (input) {
-                    input.addEventListener('focus', () => tip.hidden = false);
-                    input.addEventListener('blur', () => tip.hidden = true);
+                    input.addEventListener('focus', showTip);
+                    input.addEventListener('blur', hideTip);
                 }
+            } else {
+                console.warn(`Tooltip pairing failed: Could not find ${triggerId} or ${tipId}`);
             }
         });
     };
 
-    // The Observer waits for your widget HTML to be injected
+    // MutationObserver handles the widget being injected dynamically
     const observer = new MutationObserver((mutations, obs) => {
-        if (document.getElementById("widgetFunction")) {
+        const widget = document.getElementById("widgetFunction");
+        if (widget) {
             initTooltips();
-            obs.disconnect(); // Stop watching once found
+            obs.disconnect(); 
         }
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
     
-    // Initial check in case it's already there
-    initTooltips();
+    // Check if it's already there (e.g. script loaded late)
+    if (document.getElementById("widgetFunction")) {
+        initTooltips();
+    }
 })();
