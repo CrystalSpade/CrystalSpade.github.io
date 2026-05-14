@@ -274,20 +274,19 @@ body.font-size-adjusted strong {
 }
 
 /* ============================================================
-   7. TOOLTIP STYLING (THE STABLE GHOST FIX)
+   7. TOOLTIP STYLING (THE BULLETPROOF VERSION)
    ============================================================ */
 
-/* Anchor the tooltips to the list items */
 .ada-widget-list li {
   position: relative !important;
 }
 
+/* Base tooltip setup - Invisible by default */
 [id^="tooltip"], [id^="toolTip"] {
   position: absolute !important; 
   top: 50%;
-  right: 115%; /* Pushes them to the left side of the widget */
+  right: 115%; 
   transform: translateY(-50%);
-  
   background: #000000 !important; 
   color: #ffffff !important;
   padding: 10px 16px !important; 
@@ -295,24 +294,22 @@ body.font-size-adjusted strong {
   font-size: 14px !important;
   font-weight: 700 !important;
   white-space: nowrap;
-  
-  /* Layering: Stays on top of everything */
   z-index: 10500 !important; 
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 
-  /* THE FIX: Invisible by default, and a "ghost" so it doesn't flicker */
-  opacity: 0;
+  /* The Key: Hidden until the class is added */
+  opacity: 0 !important;
   pointer-events: none !important; 
-  transition: opacity 0.15s ease;
+  transition: opacity 0.2s ease;
   display: block !important; 
 }
 
-/* This class is what the JavaScript will toggle */
+/* The "ON" Switch */
 .tooltip-active {
   opacity: 1 !important;
 }
 
-/* High Contrast / Vision Mode Overrides */
+/* High Contrast Override */
 body.vision-mode-enabled [id^="tooltip"], 
 body.vision-mode-enabled [id^="toolTip"] {
   background: #000000 !important;
