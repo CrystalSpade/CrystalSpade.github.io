@@ -274,42 +274,56 @@ body.font-size-adjusted strong {
 }
 
 /* ============================================================
-   7. TOOLTIP STYLING (HIGH LEGIBILITY SNAPPED UNDER MODE)
+   7. TOOLTIP STYLING (HIGH LEGIBILITY & OVERLAY FIX)
    ============================================================ */
-li:not(.ada-widget-list li) {
-  position: relative;
+
+/* 1. Ensure the list items act as the anchor point for the tooltip */
+.ada-widget-list li {
+  position: relative !important;
 }
 
-/* Base tooltip container setup */
+/* 2. Base tooltip container setup */
 [id^="tooltip"], [id^="toolTip"] {
-  position: fixed !important; /* Locks tracking parameters directly to viewport coordinates */
+  /* Use absolute to dock it to the specific list item */
+  position: absolute !important; 
   
-  /* CRITICAL CONTRAST FIXES: Pitch black background for zero transparency bleed-through */
+  /* POSITIONING: Pushes it to the left of the menu so it doesn't cover toggles */
+  top: 50%;
+  right: 105%; 
+  transform: translateY(-50%);
+  
+  /* VISIBILITY & CONTRAST */
   background: #000000 !important; 
   color: #ffffff !important;
+  display: block; /* Ensures it renders when the 'hidden' attribute is removed */
   
-  /* BOX DIMENSIONS FIXES: Added massive padding cushions to isolate text blocks */
-  padding: 10px 18px !important; 
+  /* BOX DIMENSIONS */
+  padding: 10px 16px !important; 
   border-radius: 6px;
   
-  /* FONT SCALE FIXES: Increased size, bold weight, and letter tracking for readability */
-  font-size: 15px !important;
+  /* FONT SCALING */
+  font-size: 14px !important;
   font-weight: 700 !important;
   letter-spacing: 0.5px !important;
   white-space: nowrap;
   
-  /* SHADOW & LAYERING FIXES: Deep shadow mask to separate tooltip from underlying text content */
-  z-index: 10055 !important; 
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.15);
-  pointer-events: none; 
+  /* THE STACKING FIX: 
+     Higher than the widget (10010) and focus mask (10000) 
+  */
+  z-index: 10200 !important; 
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  
+  /* THE "MENACE" FIX: 
+     Prevents the flicker by letting the mouse 'pass through' the tooltip 
+  */
+  pointer-events: none !important; 
 }
 
-/* High Contrast Override theme profiles (Forces bright neon yellow text blocks) */
+/* 3. High Contrast / Vision Mode Overrides */
 body.vision-mode-enabled [id^="tooltip"], 
 body.vision-mode-enabled [id^="toolTip"] {
   background: #000000 !important;
   color: #ffff00 !important;
   border: 3px solid #ffff00 !important;
-  font-size: 17px !important; /* Extra sizing push for vision impaired tracking states */
+  font-size: 16px !important; 
 }
-
