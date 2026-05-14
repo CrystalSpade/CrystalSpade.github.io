@@ -277,49 +277,49 @@ body.font-size-adjusted strong {
    7. TOOLTIP STYLING (HIGH LEGIBILITY & OVERLAY FIX)
    ============================================================ */
 
-/* 1. Ensure the list items act as the anchor point for the tooltip */
+/* Ensure the list items in your widget act as the anchor point */
 .ada-widget-list li {
   position: relative !important;
 }
 
-/* 2. Base tooltip container setup */
+/* Base tooltip container setup */
 [id^="tooltip"], [id^="toolTip"] {
-  /* Use absolute to dock it to the specific list item */
+  /* Absolute positioning docks it to the specific list item (li) */
   position: absolute !important; 
   
   /* POSITIONING: Pushes it to the left of the menu so it doesn't cover toggles */
   top: 50%;
-  right: 105%; 
+  right: 110%; /* Adjust this percentage to move it further/closer to the menu */
   transform: translateY(-50%);
   
-  /* VISIBILITY & CONTRAST */
+  /* VISIBILITY & CONTRAST: Solid black background ensures no text bleeds through */
   background: #000000 !important; 
   color: #ffffff !important;
-  display: block; /* Ensures it renders when the 'hidden' attribute is removed */
+  display: block; 
   
   /* BOX DIMENSIONS */
   padding: 10px 16px !important; 
   border-radius: 6px;
   
-  /* FONT SCALING */
+  /* FONT SCALING: Bold and clear for ADA compliance */
   font-size: 14px !important;
   font-weight: 700 !important;
   letter-spacing: 0.5px !important;
   white-space: nowrap;
   
   /* THE STACKING FIX: 
-     Higher than the widget (10010) and focus mask (10000) 
+     10200 is higher than your widget (10010), forcing it to stay on top.
   */
   z-index: 10200 !important; 
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2);
   
   /* THE "MENACE" FIX: 
-     Prevents the flicker by letting the mouse 'pass through' the tooltip 
+     Allows the mouse to 'pass through' the tooltip so it doesn't flicker.
   */
   pointer-events: none !important; 
 }
 
-/* 3. High Contrast / Vision Mode Overrides */
+/* High Contrast / Vision Mode Overrides */
 body.vision-mode-enabled [id^="tooltip"], 
 body.vision-mode-enabled [id^="toolTip"] {
   background: #000000 !important;
