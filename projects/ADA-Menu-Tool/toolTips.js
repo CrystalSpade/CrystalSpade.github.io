@@ -1,28 +1,24 @@
 // Tooltips
 (function() {
     const initTooltips = () => {
-        const pairings = [
-            ["lblDarkMode", "tooltipDarkMode"],
-            ["lblVisionImpaired", "tooltipVisionMode"],
-            ["lblFontSize", "tooltipFontSize"],
-            ["lblFocus", "toolTipVisualFocus"],
-            ["lblKeyboard", "tooltipKeyNav"]
-        ];
+        // Find all list items in your widget
+        const menuItems = document.querySelectorAll('.ada-widget-list li');
 
-        pairings.forEach(([triggerId, tipId]) => {
-            const trigger = document.getElementById(triggerId);
-            const tip = document.getElementById(tipId);
+        menuItems.forEach(item => {
+            // Find the tooltip and the label/trigger inside this specific li
+            const tip = item.querySelector('[id^="tooltip"], [id^="toolTip"]');
+            const trigger = item.querySelector('label') || item;
 
-            if (trigger && tip) {
-                // Ensure it's clean on start
+            if (tip && trigger) {
+                // Remove any accidental stuck classes
                 tip.classList.remove('tooltip-active');
 
-                // Trigger visibility only on hover
+                // Show on Hover
                 trigger.addEventListener('mouseenter', () => tip.classList.add('tooltip-active'));
                 trigger.addEventListener('mouseleave', () => tip.classList.remove('tooltip-active'));
                 
-                // Keyboard support for ADA
-                const input = trigger.querySelector('input');
+                // Show on Keyboard Focus (checks for the checkbox inside)
+                const input = item.querySelector('input');
                 if (input) {
                     input.addEventListener('focus', () => tip.classList.add('tooltip-active'));
                     input.addEventListener('blur', () => tip.classList.remove('tooltip-active'));
@@ -31,14 +27,14 @@
         });
     };
 
-    // Watch for the widget to appear
+    // Wait for widget injection
     const observer = new MutationObserver(() => {
-        if (document.getElementById("widgetFunction")) {
+        if (document.querySelector(".ada-widget-list")) {
             initTooltips();
             observer.disconnect(); 
         }
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
-    if (document.getElementById("widgetFunction")) initTooltips();
+    if (document.querySelector(".ada-widget-list")) initTooltips();
 })();
