@@ -14,33 +14,31 @@
             const tip = document.getElementById(tipId);
 
             if (trigger && tip) {
-                // Ensure it starts hidden
-                tip.classList.remove('tooltip-visible');
+                // Ensure it's clean on start
+                tip.classList.remove('tooltip-active');
 
-                const show = () => tip.classList.add('tooltip-visible');
-                const hide = () => tip.classList.remove('tooltip-visible');
-
-                // Hover triggers
-                trigger.addEventListener('mouseenter', show);
-                trigger.addEventListener('mouseleave', hide);
+                // Trigger visibility only on hover
+                trigger.addEventListener('mouseenter', () => tip.classList.add('tooltip-active'));
+                trigger.addEventListener('mouseleave', () => tip.classList.remove('tooltip-active'));
                 
-                // Keyboard focus triggers (for the toggle inside)
+                // Keyboard support for ADA
                 const input = trigger.querySelector('input');
                 if (input) {
-                    input.addEventListener('focus', show);
-                    input.addEventListener('blur', hide);
+                    input.addEventListener('focus', () => tip.classList.add('tooltip-active'));
+                    input.addEventListener('blur', () => tip.classList.remove('tooltip-active'));
                 }
             }
         });
     };
 
-    const observer = new MutationObserver((mutations, obs) => {
+    // Watch for the widget to appear
+    const observer = new MutationObserver(() => {
         if (document.getElementById("widgetFunction")) {
             initTooltips();
-            obs.disconnect(); 
+            observer.disconnect(); 
         }
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
-    if (document.getElementById("widgetFunction")) { initTooltips(); }
+    if (document.getElementById("widgetFunction")) initTooltips();
 })();
